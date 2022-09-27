@@ -32,6 +32,8 @@ namespace FizzBuzz
         {
             switch (type)
             {
+                case Type.Neither:
+                    return "Neither";
                 case Type.Fizz:
                     return "Fizz";
                 case Type.Buzz:

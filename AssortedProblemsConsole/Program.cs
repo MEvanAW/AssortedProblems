@@ -7,8 +7,8 @@ while (!isExit)
 {
     Console.WriteLine("Menu:");
     Console.WriteLine("0. Exit\t1. FizzBuzz");
-    Console.Write("Command: ");
-    string line = Console.ReadLine();
+    Console.Write("Enter Command: ");
+    string? line = Console.ReadLine();
     Helper.Command command = Helper.Command.None;
     switch (line)
     {
@@ -27,14 +27,7 @@ while (!isExit)
         for (int i = 1; i <= 100; i++)
         {
             string s = Identifier.TypeToString(Identifier.WhatType(i));
-            if (s != "Null")
-            {
-                Console.WriteLine(s);
-            }
-            else
-            {
-                Console.WriteLine(i);
-            }
+            Console.WriteLine(s == "Neither" ? i : s);
         }
     }
 }

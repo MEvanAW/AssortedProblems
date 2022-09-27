@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssortedProblemsConsole", "AssortedProblemsConsole\AssortedProblemsConsole.csproj", "{AAA406B2-CE07-4A1B-8D07-1B2F7377A86B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssortedProblemsConsole", "AssortedProblemsConsole\AssortedProblemsConsole.csproj", "{AAA406B2-CE07-4A1B-8D07-1B2F7377A86B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzz", "FizzBuzz\FizzBuzz.csproj", "{9CEDD616-D426-4059-B7D5-B39E235E95A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FizzBuzz", "FizzBuzz\FizzBuzz.csproj", "{9CEDD616-D426-4059-B7D5-B39E235E95A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssortedProblemsTests", "AssortedProblemsTests\AssortedProblemsTests.csproj", "{0CF855A6-6C69-499F-B2F2-8AC50A4A8941}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{9CEDD616-D426-4059-B7D5-B39E235E95A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CEDD616-D426-4059-B7D5-B39E235E95A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CEDD616-D426-4059-B7D5-B39E235E95A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CF855A6-6C69-499F-B2F2-8AC50A4A8941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CF855A6-6C69-499F-B2F2-8AC50A4A8941}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CF855A6-6C69-499F-B2F2-8AC50A4A8941}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CF855A6-6C69-499F-B2F2-8AC50A4A8941}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
