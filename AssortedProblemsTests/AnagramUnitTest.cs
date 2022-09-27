@@ -13,9 +13,11 @@ namespace AssortedProblemsTests
         public void FalseTest()
         {
             Assert.False(Identifier.IsAnagram("a", "b"));
-            Assert.False(Identifier.IsAnagram("anagam", "anagrama"));
+            Assert.False(Identifier.IsAnagram("a", "aa"));
+            Assert.False(Identifier.IsAnagram("anagram", "anagrama"));
             Assert.False(Identifier.IsAnagram("anagrama", "anagram"));
-            Assert.False(Identifier.IsAnagram("anagram", "marganaa"));
+            Assert.False(Identifier.IsAnagram("anagram", "marganab"));
+            Assert.False(Identifier.IsAnagram("anagramb", "margana"));
         }
         [Fact]
         public void CommonTest()
@@ -38,13 +40,13 @@ namespace AssortedProblemsTests
             Assert.True(Identifier.IsAnagram("1234567", "6712345"));
             Assert.False(Identifier.IsAnagram("1000000", "0111111"));
             Assert.True(Identifier.IsAnagram("1234567", "5671234"));
-            Assert.False(Identifier.IsAnagram("1234567", "12345677"));
+            Assert.False(Identifier.IsAnagram("1234567", "12345678"));
             Assert.True(Identifier.IsAnagram("1234567", "4567123"));
-            Assert.False(Identifier.IsAnagram("12345677", "1234567"));
+            Assert.False(Identifier.IsAnagram("12345678", "1234567"));
             Assert.True(Identifier.IsAnagram("1234567", "3456712"));
-            Assert.False(Identifier.IsAnagram("11234567", "1234567"));
+            Assert.False(Identifier.IsAnagram("10234567", "1234567"));
             Assert.True(Identifier.IsAnagram("1234567", "2345671"));
-            Assert.False(Identifier.IsAnagram("1234567", "11234567"));
+            Assert.False(Identifier.IsAnagram("1234567", "10234567"));
         }
         [Fact]
         public void AlphaNumericTest()
