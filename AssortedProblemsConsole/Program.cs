@@ -52,7 +52,7 @@ while (!isExit)
                 {
                     Console.Write(word + " is ");
                     bool isp = PIdentifier.IsPalindrome(word);
-                    Console.WriteLine(isp ? "A palindrome." : "Not a palindrome.");
+                    Console.WriteLine(isp ? "a palindrome." : "not a palindrome.");
                 }
             }
             break;

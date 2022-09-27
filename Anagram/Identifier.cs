@@ -1,7 +1,16 @@
 ﻿namespace Anagram
 {
+    /// <summary>
+    /// Class to identify whether 2 strings are anagrams or not.
+    /// </summary>
     public static class Identifier
     {
+        /// <summary>
+        /// Identifies whether the 2 parameters are anagrams or not.
+        /// </summary>
+        /// <param name="a">The first string.</param>
+        /// <param name="b">The second string.</param>
+        /// <returns>Whether the 2 parameters are anagrams or not.</returns>
         public static bool IsAnagram(string a, string b)
         {
             if (a.Length != b.Length)
