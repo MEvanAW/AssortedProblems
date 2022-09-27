@@ -6,7 +6,12 @@
         {
             None,
             FizzBuzz,
-            Palindrome
+            Palindrome,
+            Anagram
+        }
+        internal static void NullStringNotice()
+        {
+            Console.WriteLine("The word cannot be null.");
         }
     }
 }
