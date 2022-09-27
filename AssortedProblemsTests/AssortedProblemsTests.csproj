@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FizzBuzz\FizzBuzz.csproj" />
+    <ProjectReference Include="..\Palindrome\Palindrome.csproj" />
   </ItemGroup>
 
 </Project>

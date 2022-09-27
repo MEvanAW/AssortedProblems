@@ -5,7 +5,8 @@
         internal enum Command: byte
         {
             None,
-            FizzBuzz
+            FizzBuzz,
+            Palindrome
         }
     }
 }
