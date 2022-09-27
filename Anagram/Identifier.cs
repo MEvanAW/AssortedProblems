@@ -6,7 +6,7 @@
     public static class Identifier
     {
         /// <summary>
-        /// Identifies whether the 2 parameters are anagrams or not.
+        /// Identifies whether the 2 parameters are anagrams (case sensitive).
         /// </summary>
         /// <param name="a">The first string.</param>
         /// <param name="b">The second string.</param>

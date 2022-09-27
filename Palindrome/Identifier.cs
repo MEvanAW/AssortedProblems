@@ -6,7 +6,7 @@
     public static class Identifier
     {
         /// <summary>
-        /// Determine whether the string is a palindrome.
+        /// Determine whether the string is a palindrome (case sensitive).
         /// </summary>
         /// <param name="s">The string to be determined.</param>
         /// <returns>Whether the string a palindrome or not.</returns>
