@@ -12,14 +12,22 @@ For each multiple of 3, print "Fizz" instead of the number.</br>
 For each multiple of 5, print "Buzz" instead of the number.</br>
 For numbers which are multiples of both 3 and 5, print "FizzBuzz" instead of the number. </br>
 ### Solution
-Implemented in FizzBuzz library and is called by the Console App.
+Implemented in FizzBuzz library and is called by the console app.
 ### Testing
-Tested by FizzBuzzUnitTest in "AssortedProblemTests" xUnit Test Project.
+Tested by FizzBuzzUnitTest in the xUnit Test Project.
 ## Palindrome
-A word, verse, or sentence (such as "Able was I ere I saw Elba") or a number (such as 1881) that reads the same backward or forward.</br>(Merriam-Webster)
+A word, verse, or sentence (such as "able was I ere I saw elba") or a number (such as 1881) that reads the same backward or forward. (Merriam-Webster)
 ### Problem
-Determine whether the input is a palindrome or not.
+Determine whether the input is a palindrome or not (case sensitive).
 ### Solution
-Implemented in Palindrome library and is called by the Console App.
+Implemented in Palindrome library and is called by the console app.
 ### Testing
-Tested by PalindromeUnitTest in "AssortedProblemTests" xUnit Test Project.
+Tested by PalindromeUnitTest in the xUnit Test Project.
+## Anagram
+An anagram is a word or phrase formed by rearranging the letters of a different word or phrase. (Wikipedia)
+### Problem
+Determine whether the two inputs are anagrams (case sensitive).
+### Solution
+Implemented in Anagram library and is called by the console app.
+### Testing
+Tested by AnagramUnitTest in the xUnit Test Project.
