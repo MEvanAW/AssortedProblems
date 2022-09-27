@@ -27,21 +27,19 @@
                 try { bCharMap.Add(c, 1); }
                 catch { bCharMap[c]++; }
             }
+            byte keyCount = 0;
             foreach (KeyValuePair<char,byte> pair in aCharMap)
             {
                 byte count = 0;
-                try
-                {
-                    count = bCharMap[pair.Key];
-                    bCharMap.Remove(pair.Key);
-                }
+                try { count = bCharMap[pair.Key]; }
                 catch { return false; }
                 if (count != pair.Value)
                 {
                     return false;
                 }
+                keyCount++;
             }
-            if (bCharMap.Any())
+            if (keyCount != bCharMap.Count)
                 return false;
             return true;
         }
