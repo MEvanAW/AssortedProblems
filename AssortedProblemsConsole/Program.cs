@@ -9,7 +9,9 @@ while (!isExit)
 {
     Console.WriteLine("Menu:");
     Console.WriteLine("0. Exit\t\t1. FizzBuzz");
-    Console.WriteLine("2. Palindrome\t3. Anagram");
+    Console.WriteLine("2. Palindrome Case Sensitive");
+    Console.WriteLine("3. Palindrome Case Insensitive");
+    Console.WriteLine("4. Anagram");
     Console.Write("Enter command: ");
     string? line = Console.ReadLine();
     Helper.Command command = Helper.Command.None;
@@ -22,9 +24,12 @@ while (!isExit)
             command = Helper.Command.FizzBuzz;
             break;
         case "2":
-            command = Helper.Command.Palindrome;
+            command = Helper.Command.PalindromeCaseSensitive;
             break;
         case "3":
+            command = Helper.Command.PalindromeCaseInsensitive;
+            break;
+        case "4":
             command = Helper.Command.Anagram;
             break;
         default:
@@ -40,20 +45,14 @@ while (!isExit)
                 Console.WriteLine(s == "Neither" ? i : s);
             }
             break;
-        case Helper.Command.Palindrome:
+        case Helper.Command.PalindromeCaseSensitive:
             {
-                Console.Write("Enter word: ");
-                string? word = Console.ReadLine();
-                if (word == null)
-                {
-                    Helper.NullStringNotice();
-                }
-                else
-                {
-                    Console.Write(word + " is ");
-                    bool isp = PIdentifier.IsPalindrome(word);
-                    Console.WriteLine(isp ? "a palindrome." : "not a palindrome.");
-                }
+                Helper.CheckPalindrome(true);
+            }
+            break;
+        case Helper.Command.PalindromeCaseInsensitive:
+            {
+                Helper.CheckPalindrome(false);
             }
             break;
         case Helper.Command.Anagram:
