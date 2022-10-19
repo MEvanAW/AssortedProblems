@@ -158,7 +158,7 @@ namespace AssortedProblemsTests
             sb.AppendLine();
             sb.Append("    |");
             sb.AppendLine();
-            sb.Append("    |");
+            sb.Append("    z - t - e - c");
             Assert.Equal(sb.ToString(), TDictionary.PrintTree(tree1));
         }
 

@@ -43,29 +43,33 @@ namespace TreeDictionary
                 int count2 = trackedWords.Count;
                 foreach (KeyValuePair<int, List<string>> kvp in trackedWords)
                 {
-                    if (!firstLine)
+                    count1++;
+                    int count3 = kvp.Value.Count;
+                    for (int i = 0; i < count3; i++)
                     {
-                        if (tree.Down != null)
+                        if (!firstLine)
+                        {
+                            if (tree.Down != null)
+                                sb.Append('|');
+                            else
+                                sb.Append(' ');
+                            if (kvp.Key > 0)
+                                sb.Append(new string(' ', kvp.Key * 4 - 1));
                             sb.Append('|');
-                        else
-                            sb.Append(' ');
+                            sb.AppendLine();
+                            if (tree.Down != null)
+                                sb.Append('|');
+                            else
+                                sb.Append(' ');
+                        }
                         if (kvp.Key > 0)
                             sb.Append(new string(' ', kvp.Key * 4 - 1));
-                        sb.Append('|');
+                        sb.AppendJoin(" - ", kvp.Value[i].ToCharArray());
+                        if (tree.Down == null && count1 == count2 && i == count3 - 1)
+                            break;
                         sb.AppendLine();
-                        if (tree.Down != null)
-                            sb.Append('|');
-                        else
-                            sb.Append(' ');
+                        firstLine = false;
                     }
-                    if (kvp.Key > 0)
-                        sb.Append(new string(' ', kvp.Key * 4 - 1));
-                    sb.AppendJoin(" - ", kvp.Value[0].ToCharArray());
-                    count1++;
-                    if (tree.Down == null && count1 == count2)
-                        break;
-                    sb.AppendLine();
-                    firstLine = false;
                 }
                 if (tree.Down != null)
                 {
