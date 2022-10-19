@@ -34,5 +34,19 @@
             }
             return true;
         }
+
+        public static int CalculatePalindromeLevel(string a)
+        {
+            a = a.Replace(" ", "");
+            int level = 0;
+            int len = a.Length;
+            int mid = len / 2;
+            for (int i = 0; i < mid; i++)
+            {
+                if (char.ToLowerInvariant(a[i]) != char.ToLowerInvariant(a[len - 1 - i]))
+                    return 0;
+            }
+            return 1;
+        }
     }
 }
