@@ -10,6 +10,7 @@ namespace AssortedProblemsConsole
             FizzBuzz,
             PalindromeCaseSensitive,
             PalindromeCaseInsensitive,
+            PalindromeLevel,
             Anagram
         }
         internal static void NullStringNotice()
@@ -22,7 +23,7 @@ namespace AssortedProblemsConsole
             string? word = Console.ReadLine();
             if (word == null)
             {
-                Helper.NullStringNotice();
+                NullStringNotice();
             }
             else
             {
