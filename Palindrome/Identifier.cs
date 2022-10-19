@@ -35,6 +35,11 @@
             return true;
         }
 
+        /// <summary>
+        /// Calculate palindrome level of a string.
+        /// </summary>
+        /// <param name="a">The string to be calculated its palindrome level.</param>
+        /// <returns>The palindrome level of a.</returns>
         public static int CalculatePalindromeLevel(string a)
         {
             if (a == "")
