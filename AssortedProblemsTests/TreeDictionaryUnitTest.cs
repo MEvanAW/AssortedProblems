@@ -1,4 +1,5 @@
 ﻿using TreeDictionary;
+using System.Text;
 
 namespace AssortedProblemsTests
 {
@@ -109,6 +110,7 @@ namespace AssortedProblemsTests
             Assert.True(TDictionary.Exist(tree1, "az"));
             Assert.True(TDictionary.Exist(tree1, "aztec"));
         }
+
         [Fact]
         public void FalseTest1()
         {
@@ -118,6 +120,7 @@ namespace AssortedProblemsTests
             Assert.False(TDictionary.Exist(tree1, "dll"));
             Assert.False(TDictionary.Exist(tree1, "ec"));
         }
+
         [Fact]
         public void TrueTest2()
         {
@@ -131,6 +134,7 @@ namespace AssortedProblemsTests
             Assert.True(TDictionary.Exist(tree2, "debug"));
             Assert.True(TDictionary.Exist(tree2, "decode"));
         }
+
         [Fact]
         public void FalseTest2()
         {
@@ -140,6 +144,50 @@ namespace AssortedProblemsTests
             Assert.False(TDictionary.Exist(tree2, "ode"));
             Assert.False(TDictionary.Exist(tree2, "bug"));
             Assert.False(TDictionary.Exist(tree2, "e"));
+        }
+
+        [Fact]
+        public void PrintTest1()
+        {
+            StringBuilder sb = new("");
+            sb.Append("a - d - d");
+            sb.AppendLine();
+            sb.Append("    |");
+            sb.AppendLine();
+            sb.Append("    l - l");
+            sb.AppendLine();
+            sb.Append("    |");
+            sb.AppendLine();
+            sb.Append("    z - t - e - c");
+            Assert.Equal(sb.ToString(), TDictionary.PrintTree(tree1));
+        }
+
+        [Fact]
+        public void PrintTest2()
+        {
+            StringBuilder sb = new("");
+            sb.Append("a - d - d");
+            sb.AppendLine();
+            sb.Append("|   |");
+            sb.AppendLine();
+            sb.Append("|   l - l - y");
+            sb.AppendLine();
+            sb.Append("|       |");
+            sb.AppendLine();
+            sb.Append("|       t - e - r");
+            sb.AppendLine();
+            sb.Append('|');
+            sb.AppendLine();
+            sb.Append("c - o - d - e");
+            sb.AppendLine();
+            sb.Append('|');
+            sb.AppendLine();
+            sb.Append("d - e - b - u - g");
+            sb.AppendLine();
+            sb.Append("        |");
+            sb.AppendLine();
+            sb.Append("        c - o - d - e");
+            Assert.Equal(sb.ToString(), TDictionary.PrintTree(tree2));
         }
     }
 }
