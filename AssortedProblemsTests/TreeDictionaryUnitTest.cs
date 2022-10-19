@@ -2,7 +2,7 @@
 
 namespace AssortedProblemsTests
 {
-    public class TreeDictionaryTest
+    public class TreeDictionaryUnitTest
     {
         private readonly Tree tree1 = new(
             new Tree(
