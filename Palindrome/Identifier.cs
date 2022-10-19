@@ -37,16 +37,74 @@
 
         public static int CalculatePalindromeLevel(string a)
         {
+            if (a == "")
+                return 1;
             a = a.Replace(" ", "");
-            int level = 0;
             int len = a.Length;
             int mid = len / 2;
+            List<Iterator> iterators = new();
+            int temp = len;
+            if (temp > 0)
+                while (true)
+                {
+                    iterators.Add(new Iterator(temp - 1));
+                    if (temp <= 1)
+                        break;
+                    if (temp % 2 != 0)
+                        temp = temp / 2 + 1;
+                    else
+                        temp /= 2;
+                }
             for (int i = 0; i < mid; i++)
             {
-                if (char.ToLowerInvariant(a[i]) != char.ToLowerInvariant(a[len - 1 - i]))
-                    return 0;
+                foreach (Iterator iterator in iterators)
+                {
+                    if (iterator.PalindromeEnum != PalindromeEnum.None)
+                        break;
+                    if (char.ToLowerInvariant(a[i]) != char.ToLowerInvariant(a[iterator.Index]))
+                    {
+                        iterator.PalindromeEnum = PalindromeEnum.False;
+                        break;
+                    }
+                    if (iterator.Index == iterator.Mid)
+                    {
+                        iterator.PalindromeEnum = PalindromeEnum.True;
+                        continue;
+                    }
+                    iterator.Index--;
+                }
             }
-            return 1;
+            int level = 0;
+            foreach (Iterator iterator in iterators)
+            {
+                if (iterator.PalindromeEnum == PalindromeEnum.False)
+                    break;
+                else
+                    level++;
+            }
+            if (level == iterators.Count)
+                level++;
+            return level;
+        }
+
+        internal enum PalindromeEnum: byte
+        {
+            None,
+            False,
+            True
+        }
+
+        internal class Iterator
+        {
+            internal int Index { get; set; }
+            internal PalindromeEnum PalindromeEnum { get; set; }
+            internal int Mid { get; private set; }
+            internal Iterator(int index)
+            {
+                Index = index;
+                Mid = (index + 1) / 2;
+                PalindromeEnum = PalindromeEnum.None;
+            }
         }
     }
 }

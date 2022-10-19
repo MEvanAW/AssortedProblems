@@ -144,5 +144,23 @@ namespace AssortedProblemsTests
             Assert.False(Identifier.IsPalindrome("4n4gr4m", false));
             Assert.False(Identifier.IsPalindrome("k4sur", false));
         }
+
+        [Fact]
+        public void LevelTest()
+        {
+            Assert.Equal(2, Identifier.CalculatePalindromeLevel("dam madam mad"));
+            Assert.Equal(3, Identifier.CalculatePalindromeLevel("tattattattat"));
+            Assert.Equal(2, Identifier.CalculatePalindromeLevel("a"));
+            Assert.Equal(3, Identifier.CalculatePalindromeLevel("bb"));
+            Assert.Equal(4, Identifier.CalculatePalindromeLevel("ccc"));
+            Assert.Equal(4, Identifier.CalculatePalindromeLevel("dddd"));
+            Assert.Equal(5, Identifier.CalculatePalindromeLevel("eeeee"));
+            Assert.Equal(5, Identifier.CalculatePalindromeLevel("ffffff"));
+            Assert.Equal(5, Identifier.CalculatePalindromeLevel("ggggggg"));
+            Assert.Equal(5, Identifier.CalculatePalindromeLevel("hhhhhhhh"));
+            Assert.Equal(6, Identifier.CalculatePalindromeLevel("iiiiiiiii"));
+            Assert.Equal(1, Identifier.CalculatePalindromeLevel(""));
+            Assert.Equal(0, Identifier.CalculatePalindromeLevel("ab"));
+        }
     }
 }
