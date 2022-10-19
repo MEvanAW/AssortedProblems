@@ -36,7 +36,19 @@
                 if (rightResult != TrackStatus.Found)
                 {
                     if (tree.Right.Down != null)
-                        rightDownResult = Traverse(tree.Right.Down, target, tracked);
+                    {
+                        Tree downTree = tree.Right.Down;
+                        while (true)
+                        {
+                            rightDownResult = Traverse(downTree, target, tracked);
+                            if (rightDownResult == TrackStatus.Found)
+                                return TrackStatus.Found;
+                            if (downTree.Down != null)
+                                downTree = downTree.Down;
+                            else
+                                break;
+                        }
+                    }
                     else
                         return TrackStatus.LeafReached;
                 }
