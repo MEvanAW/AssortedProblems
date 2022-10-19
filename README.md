@@ -7,6 +7,7 @@ An xUnit Test Project for testing libraries in AssortedProblem Solution. A good 
 ## Contents
 - [FizzBuzz](#fizzbuzz)
 - [Palindrome](#palindrome)
+- [Palindrome Level](#palindrome-level)
 - [Anagram](#anagram)
 ## FizzBuzz
 ### Problem
@@ -20,9 +21,35 @@ Implemented in FizzBuzz library and is called by the console app.
 ### Testing
 Tested by FizzBuzzUnitTest in the xUnit Test Project.
 ## Palindrome
-A word, verse, or sentence (such as "Able was I ere I saw Elba") or a number (such as 1881) that reads the same backward or forward. (Merriam-Webster)
+A word, verse, or sentence (such as "Able was I ere I saw Elba") or a number (such as 1881) that reads the same backward or forward (Merriam-Webster). It ignores spaces and punctuation marks. Empty string is a palindrome.
 ### Problem
-Determine whether the input is a palindrome or not. Implement both case sensitive and case insensitive.
+Determine whether the input is a palindrome or not. Implement both case sensitive and case insensitive. Assume there is no punctuation mark from the input.
+### Solution
+Implemented in Palindrome library and is called by the console app.
+### Testing
+Tested by PalindromeUnitTest in the xUnit Test Project.
+## Palindrome Level
+### Problem
+Calculate the palindrome level of the input (case insensitive).</br>
+1. Example "dam madam mad":
+  - dammadammad: a palindrome, count 1
+  - dammad: a palindrome, count 2
+  - dam: not a palindrome
+  - Thus, "dam madam mad" is palindrome level 2.
+2. Second Example "tattattattat":
+  - tattattattat: a palindrome, count 1
+  - tattat: a palindrome, count 2
+  - tat: a palindrome, count 3
+  - ta: not a palindrome
+  - Thus, "tattattattat" is palindrome level 3.
+3. Third Example "ab":
+  - ab: not a palindrome
+  - Thus, "ab" is palindrome level 0.</br>
+4. Notes:
+- No need to check the next ones if the current one is not a palindrome
+- If the number of characters is odd but not one, the next one checked is the first half + 1
+- If the number of characters is even, the next one checked is the first half
+- If the number of character is one, the next one checked is empty string
 ### Solution
 Implemented in Palindrome library and is called by the console app.
 ### Testing

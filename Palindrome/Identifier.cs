@@ -34,5 +34,82 @@
             }
             return true;
         }
+
+        /// <summary>
+        /// Calculate palindrome level of a string.
+        /// </summary>
+        /// <param name="a">The string to be calculated its palindrome level.</param>
+        /// <returns>The palindrome level of a.</returns>
+        public static int CalculatePalindromeLevel(string a)
+        {
+            if (a == "")
+                return 1;
+            a = a.Replace(" ", "");
+            int len = a.Length;
+            int mid = len / 2;
+            List<Iterator> iterators = new();
+            int temp = len;
+            if (temp > 0)
+                while (true)
+                {
+                    iterators.Add(new Iterator(temp - 1));
+                    if (temp <= 1)
+                        break;
+                    if (temp % 2 != 0)
+                        temp = temp / 2 + 1;
+                    else
+                        temp /= 2;
+                }
+            for (int i = 0; i < mid; i++)
+            {
+                foreach (Iterator iterator in iterators)
+                {
+                    if (iterator.PalindromeEnum != PalindromeEnum.None)
+                        break;
+                    if (char.ToLowerInvariant(a[i]) != char.ToLowerInvariant(a[iterator.Index]))
+                    {
+                        iterator.PalindromeEnum = PalindromeEnum.False;
+                        break;
+                    }
+                    if (iterator.Index == iterator.Mid)
+                    {
+                        iterator.PalindromeEnum = PalindromeEnum.True;
+                        continue;
+                    }
+                    iterator.Index--;
+                }
+            }
+            int level = 0;
+            foreach (Iterator iterator in iterators)
+            {
+                if (iterator.PalindromeEnum == PalindromeEnum.False)
+                    break;
+                else
+                    level++;
+            }
+            if (level == iterators.Count)
+                level++;
+            return level;
+        }
+
+        internal enum PalindromeEnum: byte
+        {
+            None,
+            False,
+            True
+        }
+
+        internal class Iterator
+        {
+            internal int Index { get; set; }
+            internal PalindromeEnum PalindromeEnum { get; set; }
+            internal int Mid { get; private set; }
+            internal Iterator(int index)
+            {
+                Index = index;
+                Mid = (index + 1) / 2;
+                PalindromeEnum = PalindromeEnum.None;
+            }
+        }
     }
 }
