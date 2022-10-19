@@ -9,6 +9,7 @@ An xUnit Test Project for testing libraries in AssortedProblem Solution. A good 
 - [Palindrome](#palindrome)
 - [Palindrome Level](#palindrome-level)
 - [Anagram](#anagram)
+- [Tree Dictionary](#tree-dictionary)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -62,3 +63,37 @@ Determine whether the two inputs are anagrams (case sensitive).
 Implemented in Anagram library and is called by the console app.
 ### Testing
 Tested by AnagramUnitTest in the xUnit Test Project.
+## Tree Dictionary
+Tree dictionary stores collection of words in a form of tree.
+1. First Example</br>
+This tree dictionary stores words "add", "all", and "aztec" in a form of tree.
+```
+a - d - d
+    |
+    l - l
+    |
+    z - t - e - c
+```
+2. Second Example</br>
+This tree dictionary stores words "add", "ally", "alter", "code", "debug", and "decode" in a form of tree.
+```
+a - d - d
+|   |
+|   l - l - y
+|       |
+|       t - e - r
+|
+c - o - d - e
+|
+d - e - b - u - g
+        |
+        c - o - d - e
+```
+Notice that by adding "ally" to dictionary tree, the word "all" is automatically included. This is also true for all substring of those 6 words.</br>
+Also notice that the word "ac" is not included in the tree dictionary.
+### Problem
+Create a function to find whether a string exists in a tree dictionary.
+### Solution
+Implemented in TreeDictionary library.
+### Testing
+Tested by TreeDictionaryUnitTest in the xUnit Test Project.
