@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Palindrome", "Palindrome\Pa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anagram", "Anagram\Anagram.csproj", "{9B726B6F-4344-4CDB-8224-796A08533BB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeDictionary", "TreeDictionary\TreeDictionary.csproj", "{A8952ABE-B607-4DCD-A05F-6C5FA99B5DDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TreeDictionary", "TreeDictionary\TreeDictionary.csproj", "{A8952ABE-B607-4DCD-A05F-6C5FA99B5DDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codeland", "Codeland\Codeland.csproj", "{142CAE8B-7900-4ED3-B7A1-A8C8B4B542E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{A8952ABE-B607-4DCD-A05F-6C5FA99B5DDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8952ABE-B607-4DCD-A05F-6C5FA99B5DDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8952ABE-B607-4DCD-A05F-6C5FA99B5DDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{142CAE8B-7900-4ED3-B7A1-A8C8B4B542E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{142CAE8B-7900-4ED3-B7A1-A8C8B4B542E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{142CAE8B-7900-4ED3-B7A1-A8C8B4B542E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{142CAE8B-7900-4ED3-B7A1-A8C8B4B542E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
