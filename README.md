@@ -11,6 +11,7 @@ An xUnit Test Project for testing libraries in AssortedProblem Solution. A good 
 - [Anagram](#anagram)
 - [Tree Dictionary: Existance](#tree-dictionary-existance)
 - [Tree Dictionary: Print](#tree-dictionary-print)
+- [Codeland](#codeland)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -105,3 +106,15 @@ Make a function to return the string of a tree dictionary like shown in Tree Dic
 Implemented in TreeDictionary library.
 ### Testing
 Tested by TreeDictionaryUnitTest in the xUnit Test Project.
+## Codeland
+https://coderbyte.com/editor/Codeland%20Username%20Validation:Csharp
+### Problem
+Create username validation according to the following rules:
+1. The username is between 4 and 25 characters.
+2. It must start with a letter.
+3. It can only contain letters, numbers, and the underscore character.
+4. It cannot end with an underscore character.
+### Solution
+Implemented in Codeland library.
+### Testing
+Tested by CodelandUnitTest in the xUnit Test Project.
