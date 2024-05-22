@@ -2,7 +2,7 @@
 
 namespace AssortedProblemsTests
 {
-    public class CodelandTest
+    public class CodelandUnitTest
     {
         [Fact]
         public void NullOrEmptyUsernameTest()

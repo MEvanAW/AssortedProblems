@@ -1,18 +1,18 @@
 ﻿using AssortedProblemsConsole;
+using Codeland;
+using AIdentifier = Anagram.Identifier;
 using FBIdentifier = FizzBuzz.Identifier;
 using PIdentifier = Palindrome.Identifier;
-using AIdentifier = Anagram.Identifier;
 
 Console.WriteLine("Welcome to Assorted Problems Console.");
 bool isExit = false;
 while (!isExit)
 {
     Console.WriteLine("Menu:");
-    Console.WriteLine("0. Exit\t\t1. FizzBuzz");
-    Console.WriteLine("2. Palindrome Case Sensitive");
-    Console.WriteLine("3. Palindrome Case Insensitive");
-    Console.WriteLine("4. Calculate Palindrome Level");
-    Console.WriteLine("5. Anagram");
+    Console.WriteLine("0. Exit\t\t\t\t1. FizzBuzz");
+    Console.WriteLine("2. Palindrome Case Sensitive\t3. Palindrome Case Insensitive");
+    Console.WriteLine("4. Calculate Palindrome Level\t5. Anagram");
+    Console.WriteLine("6. Codeland");
     Console.Write("Enter command: ");
     string? line = Console.ReadLine();
     Helper.Command command = Helper.Command.None;
@@ -35,6 +35,9 @@ while (!isExit)
             break;
         case "5":
             command = Helper.Command.Anagram;
+            break;
+        case "6":
+            command = Helper.Command.Codeland;
             break;
         default:
             Console.WriteLine("The command is not recognized.");
@@ -88,6 +91,17 @@ while (!isExit)
                 {
                     Console.WriteLine(AIdentifier.IsAnagram(a, b) ? "An anagram" : "Not an anagram");
                 }
+            }
+            break;
+        case Helper.Command.Codeland:
+            Console.WriteLine("Enter username: ");
+            if (UserService.CodelandUsernameValidation(Console.ReadLine()) == UserService.TRUE_STRING)
+            {
+                Console.WriteLine("Valid username.");
+            }
+            else
+            {
+                Console.WriteLine("Invalid username.");
             }
             break;
     }

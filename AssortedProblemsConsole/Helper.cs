@@ -11,7 +11,8 @@ namespace AssortedProblemsConsole
             PalindromeCaseSensitive,
             PalindromeCaseInsensitive,
             PalindromeLevel,
-            Anagram
+            Anagram,
+            Codeland
         }
         internal static void NullStringNotice()
         {
