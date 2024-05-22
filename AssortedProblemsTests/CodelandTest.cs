@@ -8,12 +8,14 @@ namespace AssortedProblemsTests
         public void InvalidUsernameDueToFirstRuleTest()
         {
             Assert.Equal(UserService.FALSE_STRING, UserService.CodelandUsernameValidation("aa_"));
+            Assert.Equal(UserService.FALSE_STRING, UserService.CodelandUsernameValidation("h3l"));
         }
 
         [Fact]
         public void InvalidUsernameDueToFourthRuleTest()
         {
             Assert.Equal(UserService.FALSE_STRING, UserService.CodelandUsernameValidation("aa_"));
+            Assert.Equal(UserService.FALSE_STRING, UserService.CodelandUsernameValidation("u__hello_"));
         }
 
         [Fact]

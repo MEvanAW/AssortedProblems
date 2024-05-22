@@ -19,7 +19,17 @@
         /// <returns>The string true if the user name is valid, otherwise the string false.</returns>
         public static string CodelandUsernameValidation(string username)
         {
-            return FALSE_STRING;
+            // First rule checking
+            if (username.Length < 4 || username.Length > 25)
+            {
+                return FALSE_STRING;
+            }
+            // Fourth rule checking
+            if (username.LastOrDefault() == '_')
+            {
+                return FALSE_STRING;
+            }
+            return TRUE_STRING;
         }
     }
 }
