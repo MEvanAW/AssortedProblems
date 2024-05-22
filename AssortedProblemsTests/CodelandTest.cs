@@ -15,13 +15,14 @@ namespace AssortedProblemsTests
         // 1. The username is between 4 and 25 characters.
         public void InvalidUsernameDueToFirstRuleTest()
         {
+            Assert.Equal(UserService.FALSE_STRING, UserService.CodelandUsernameValidation("b"));
             Assert.Equal(UserService.FALSE_STRING, UserService.CodelandUsernameValidation("aa_"));
             Assert.Equal(UserService.FALSE_STRING, UserService.CodelandUsernameValidation("h3l"));
         }
 
         [Fact]
         // 2. It must start with a letter.
-        public void InvalidDueToSecondRuleTest()
+        public void InvalidUsernameDueToSecondRuleTest()
         {
             Assert.Equal(UserService.FALSE_STRING, UserService.CodelandUsernameValidation("__hello_world12"));
             Assert.Equal(UserService.FALSE_STRING, UserService.CodelandUsernameValidation("_hello_world12"));
@@ -29,6 +30,14 @@ namespace AssortedProblemsTests
             Assert.Equal(UserService.FALSE_STRING, UserService.CodelandUsernameValidation("__hello_world"));
             Assert.Equal(UserService.FALSE_STRING, UserService.CodelandUsernameValidation("_hello_world"));
             Assert.Equal(UserService.FALSE_STRING, UserService.CodelandUsernameValidation("1hello_world"));
+        }
+
+        [Fact]
+        // 3. It can only contain letters, numbers, and the underscore character.
+        public void InvalidUsernameDueToThirdRuleTest()
+        {
+            Assert.Equal(UserService.FALSE_STRING, UserService.CodelandUsernameValidation("u hello_world123"));
+            Assert.Equal(UserService.FALSE_STRING, UserService.CodelandUsernameValidation("u__#ello_world123"));
         }
 
         [Fact]

@@ -19,6 +19,7 @@
         /// <returns>The string true if the user name is valid, otherwise the string false.</returns>
         public static string CodelandUsernameValidation(string username)
         {
+            char underscore = '_';
             // Null checking
             if (username is null)
             {
@@ -34,8 +35,16 @@
             {
                 return FALSE_STRING;
             }
+            // Third rule checking
+            for (int i = 1; i < username.Length; i++)
+            {
+                if (!char.IsLetter(username[i]) && !char.IsNumber(username[i]) && username[i] != underscore)
+                {
+                    return FALSE_STRING;
+                }
+            }
             // Fourth rule checking
-            if (username.LastOrDefault() == '_')
+            if (username.LastOrDefault() == underscore)
             {
                 return FALSE_STRING;
             }
