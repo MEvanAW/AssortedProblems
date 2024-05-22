@@ -19,8 +19,18 @@
         /// <returns>The string true if the user name is valid, otherwise the string false.</returns>
         public static string CodelandUsernameValidation(string username)
         {
+            // Null checking
+            if (username is null)
+            {
+                return FALSE_STRING;
+            }
             // First rule checking
             if (username.Length < 4 || username.Length > 25)
+            {
+                return FALSE_STRING;
+            }
+            // Second rule checking
+            if (!char.IsLetter(username.FirstOrDefault()))
             {
                 return FALSE_STRING;
             }
