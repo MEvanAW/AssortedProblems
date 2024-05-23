@@ -25,6 +25,7 @@
     <ProjectReference Include="..\Anagram\Anagram.csproj" />
     <ProjectReference Include="..\Codeland\Codeland.csproj" />
     <ProjectReference Include="..\FizzBuzz\FizzBuzz.csproj" />
+    <ProjectReference Include="..\Intersection\Intersection.csproj" />
     <ProjectReference Include="..\Palindrome\Palindrome.csproj" />
     <ProjectReference Include="..\TreeDictionary\TreeDictionary.csproj" />
   </ItemGroup>
