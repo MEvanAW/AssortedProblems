@@ -12,6 +12,8 @@ An xUnit Test Project for testing libraries in AssortedProblem Solution. A good 
 - [Tree Dictionary: Existance](#tree-dictionary-existance)
 - [Tree Dictionary: Print](#tree-dictionary-print)
 - [Codeland](#codeland)
+- [Find Intersection](#find-intersection)
+- [Questions Marks](#questions-marks)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -125,4 +127,10 @@ Find intersection within an array of number strings. Open coderbyte page for det
 ### Solution
 Implemented in Intersection library.
 ### Testing
-Tested by IntersecctionUnitTest in the xUnit Test Project.
+Tested by IntersectionUnitTest in the xUnit Test Project.
+## Questions Marks
+https://coderbyte.com/editor/Questions%20Marks:Csharp
+### Solution
+Implemented in QuestionsMarks library.
+### Testing
+Tested by QuestionsMarksUnitTest in the xUnit Test Project.
