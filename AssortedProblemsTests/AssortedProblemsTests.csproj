@@ -27,6 +27,7 @@
     <ProjectReference Include="..\FizzBuzz\FizzBuzz.csproj" />
     <ProjectReference Include="..\Intersection\Intersection.csproj" />
     <ProjectReference Include="..\Palindrome\Palindrome.csproj" />
+    <ProjectReference Include="..\QuestionsMarks\QuestionsMarks.csproj" />
     <ProjectReference Include="..\TreeDictionary\TreeDictionary.csproj" />
   </ItemGroup>
 
