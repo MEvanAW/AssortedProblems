@@ -1,6 +1,7 @@
 ﻿using AssortedProblemsConsole;
 using Codeland;
 using Intersection;
+using QuestionsMarks;
 using AIdentifier = Anagram.Identifier;
 using FBIdentifier = FizzBuzz.Identifier;
 using PIdentifier = Palindrome.Identifier;
@@ -14,6 +15,7 @@ while (!isExit)
     Console.WriteLine("2. Palindrome Case Sensitive\t3. Palindrome Case Insensitive");
     Console.WriteLine("4. Calculate Palindrome Level\t5. Anagram");
     Console.WriteLine("6. Codeland\t\t\t7. Intersection");
+    Console.WriteLine("8. Questions Marks");
     Console.Write("Enter command: ");
     string? line = Console.ReadLine();
     Helper.Command command = Helper.Command.None;
@@ -42,6 +44,9 @@ while (!isExit)
             break;
         case "7":
             command = Helper.Command.Intersection;
+            break;
+        case "8":
+            command = Helper.Command.QuestionsMarks;
             break;
         default:
             Console.WriteLine("The command is not recognized.");
@@ -128,6 +133,16 @@ while (!isExit)
                 line1,
                 line2
             }));
+            break;
+        case Helper.Command.QuestionsMarks:
+            Console.WriteLine("Enter str:");
+            string? str = Console.ReadLine();
+            if (str is null)
+            {
+                Helper.NullStringNotice("str");
+                break;
+            }
+            Console.WriteLine(PatternChecker.QuestionsMarks(str));
             break;
     }
 }

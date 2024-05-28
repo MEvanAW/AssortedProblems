@@ -4,6 +4,7 @@ namespace AssortedProblemsConsole
 {
     internal class Helper
     {
+        internal const string NULL_STRING_NOTICE_FORMAT = "The {0} cannot be null.";
         internal enum Command: byte
         {
             None,
@@ -13,11 +14,12 @@ namespace AssortedProblemsConsole
             PalindromeLevel,
             Anagram,
             Codeland,
-            Intersection
+            Intersection,
+            QuestionsMarks
         }
-        internal static void NullStringNotice()
+        internal static void NullStringNotice(string fieldName = "word")
         {
-            Console.WriteLine("The word cannot be null.");
+            Console.WriteLine(string.Format(NULL_STRING_NOTICE_FORMAT, fieldName));
         }
         internal static void CheckPalindrome(bool isCaseSensitive = true)
         {
