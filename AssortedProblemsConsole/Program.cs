@@ -1,5 +1,6 @@
 ﻿using AssortedProblemsConsole;
 using Codeland;
+using Intersection;
 using AIdentifier = Anagram.Identifier;
 using FBIdentifier = FizzBuzz.Identifier;
 using PIdentifier = Palindrome.Identifier;
@@ -12,7 +13,7 @@ while (!isExit)
     Console.WriteLine("0. Exit\t\t\t\t1. FizzBuzz");
     Console.WriteLine("2. Palindrome Case Sensitive\t3. Palindrome Case Insensitive");
     Console.WriteLine("4. Calculate Palindrome Level\t5. Anagram");
-    Console.WriteLine("6. Codeland");
+    Console.WriteLine("6. Codeland\t\t\t7. Intersection");
     Console.Write("Enter command: ");
     string? line = Console.ReadLine();
     Helper.Command command = Helper.Command.None;
@@ -38,6 +39,9 @@ while (!isExit)
             break;
         case "6":
             command = Helper.Command.Codeland;
+            break;
+        case "7":
+            command = Helper.Command.Intersection;
             break;
         default:
             Console.WriteLine("The command is not recognized.");
@@ -103,6 +107,27 @@ while (!isExit)
             {
                 Console.WriteLine("Invalid username.");
             }
+            break;
+        case Helper.Command.Intersection:
+            Console.WriteLine("Enter first string (ex: 1, 2, 3):");
+            var line1 = Console.ReadLine();
+            if (line1 is null)
+            {
+                Console.WriteLine(IntersectionFinder.FALSE_STRING);
+                break;
+            }
+            Console.WriteLine("Enter second string (ex: 2, 3, 4):");
+            var line2 = Console.ReadLine();
+            if (line2 is null)
+            {
+                Console.WriteLine(IntersectionFinder.FALSE_STRING);
+                break;
+            }
+            Console.WriteLine(IntersectionFinder.FindIntersection(new string[]
+            {
+                line1,
+                line2
+            }));
             break;
     }
 }
