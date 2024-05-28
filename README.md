@@ -118,3 +118,11 @@ Create username validation according to the following rules:
 Implemented in Codeland library.
 ### Testing
 Tested by CodelandUnitTest in the xUnit Test Project.
+## Find Intersection
+https://coderbyte.com/information/Find%20Intersection
+### Problem
+Find intersection within an array of number strings. Open coderbyte page for details.
+### Solution
+Implemented in Intersection library.
+### Testing
+Tested by IntersecctionUnitTest in the xUnit Test Project.
