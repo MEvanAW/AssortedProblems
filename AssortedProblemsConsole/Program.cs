@@ -103,7 +103,7 @@ while (!isExit)
             }
             break;
         case Helper.Command.Codeland:
-            Console.WriteLine("Enter username: ");
+            Console.Write("Enter username: ");
             if (UserService.CodelandUsernameValidation(Console.ReadLine()) == UserService.TRUE_STRING)
             {
                 Console.WriteLine("Valid username.");
@@ -114,20 +114,22 @@ while (!isExit)
             }
             break;
         case Helper.Command.Intersection:
-            Console.WriteLine("Enter first string (ex: 1, 2, 3):");
+            Console.Write("Enter first string (ex. 1, 2, 3): ");
             var line1 = Console.ReadLine();
             if (line1 is null)
             {
                 Console.WriteLine(IntersectionFinder.FALSE_STRING);
                 break;
             }
-            Console.WriteLine("Enter second string (ex: 2, 3, 4):");
+            line1 = line1!.Trim();
+            Console.Write("Enter second string (ex. 2, 3, 4): ");
             var line2 = Console.ReadLine();
             if (line2 is null)
             {
                 Console.WriteLine(IntersectionFinder.FALSE_STRING);
                 break;
             }
+            line2 = line2!.Trim();
             Console.WriteLine(IntersectionFinder.FindIntersection(new string[]
             {
                 line1,
@@ -135,7 +137,7 @@ while (!isExit)
             }));
             break;
         case Helper.Command.QuestionsMarks:
-            Console.WriteLine("Enter str:");
+            Console.Write("Enter str: ");
             string? str = Console.ReadLine();
             if (str is null)
             {
