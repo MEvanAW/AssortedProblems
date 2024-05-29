@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codeland", "Codeland\Codela
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intersection", "Intersection\Intersection.csproj", "{C02E52C4-99A8-4FF9-9E15-872B9EDD20B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestionsMarks", "QuestionsMarks\QuestionsMarks.csproj", "{8B92E0C0-BD17-4C91-8479-AB78B79AD339}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestionsMarks", "QuestionsMarks\QuestionsMarks.csproj", "{8B92E0C0-BD17-4C91-8479-AB78B79AD339}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoderbyteConsoleApp", "CoderbyteConsoleApp\CoderbyteConsoleApp.csproj", "{012A2D45-618C-403C-A08D-EF4038670108}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{8B92E0C0-BD17-4C91-8479-AB78B79AD339}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B92E0C0-BD17-4C91-8479-AB78B79AD339}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B92E0C0-BD17-4C91-8479-AB78B79AD339}.Release|Any CPU.Build.0 = Release|Any CPU
+		{012A2D45-618C-403C-A08D-EF4038670108}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{012A2D45-618C-403C-A08D-EF4038670108}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{012A2D45-618C-403C-A08D-EF4038670108}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{012A2D45-618C-403C-A08D-EF4038670108}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
