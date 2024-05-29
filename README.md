@@ -1,9 +1,11 @@
 # AssortedProblems
-C# Console and Libraries for Problems That Are Commonly Asked in a Live Coding Interview
+C# console and libraries for problems asked in a live coding interview or a technical assessment.
 ## AssortedProblemsConsole
 Run the solution and a console will appear. Enter a command according to menu to run the corresponding problem.
 ## AssortedProblemsTests
 An xUnit Test Project for testing libraries in AssortedProblem Solution. A good test suite can help us refactor quicker and in a less stressful manner. TDD (Test Driven Development) can help and force us to design well factored software iteratively, backed by tests to help future work as it arrives.
+## CoderbyteConsoleApp
+Console app for coderbyte technical assessment or similar.
 ## Contents
 - [FizzBuzz](#fizzbuzz)
 - [Palindrome](#palindrome)
@@ -14,6 +16,8 @@ An xUnit Test Project for testing libraries in AssortedProblem Solution. A good 
 - [Codeland](#codeland)
 - [Find Intersection](#find-intersection)
 - [Questions Marks](#questions-marks)
+- [Coderbyte](#coderbyte)
+  - [First Factorial](#first-factorial)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -134,3 +138,9 @@ https://coderbyte.com/editor/Questions%20Marks:Csharp
 Implemented in QuestionsMarks library.
 ### Testing
 Tested by QuestionsMarksUnitTest in the xUnit Test Project.
+## Coderbyte
+Use `git checkout {commit hash}` to open related challenge. Code is located in CoderbyteConsoleApp/Program.cs Use `git checkout master` to return.
+### First Factorial
+https://coderbyte.com/information/First%20Factorial
+
+`git checkout a4e1f39ebc323681af7ea4d7853485dbe6d79c9f`
