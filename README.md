@@ -18,6 +18,7 @@ Console app for coderbyte technical assessment or similar.
 - [Questions Marks](#questions-marks)
 - [Coderbyte](#coderbyte)
   - [First Factorial](#first-factorial)
+  - [Longest Word](#longest-word)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -144,3 +145,7 @@ Use `git checkout {commit hash}` to open related challenge. Code is located in C
 https://coderbyte.com/information/First%20Factorial
 
 `git checkout a4e1f39ebc323681af7ea4d7853485dbe6d79c9f`
+### Longest Word
+https://coderbyte.com/information/Longest%20Word
+
+`git checkout b214b1602fd713377793178f0d1f834c18d7c852`
