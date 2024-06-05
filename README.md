@@ -20,6 +20,7 @@ Console app for coderbyte technical assessment or similar.
   - [First Factorial](#first-factorial)
   - [Longest Word](#longest-word)
   - [Min Window Substring](#min-window-substring)
+  - [Tree Constructor](#tree-constructor)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -154,3 +155,7 @@ https://coderbyte.com/information/Longest%20Word
 https://coderbyte.com/information/Min%20Window%20Substring
 
 `git checkout 3c14c6068f63a1f3358e430a5901c0e98f2148a6`
+### Tree Constructor
+https://coderbyte.com/information/Tree%20Constructor
+
+`git checkout a459715d113e3d412a680e9b405b8583cb7edffe`
