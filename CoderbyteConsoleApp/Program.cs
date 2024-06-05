@@ -1,35 +1,57 @@
-﻿// https://coderbyte.com/information/Longest%20Word
+﻿// https://coderbyte.com/information/Min%20Window%20Substring
 using System;
 using System.Linq;
 
 class MainClass
 {
-    public static string LongestWord(string sen)
+    public static string MinWindowSubstring(string[] strArr)
     {
-        var words = sen.Split(' ');
-        if (words.Length <= 0)
+        var kDictionary = new Dictionary<char, int>();
+        var returnString = strArr[0];
+        foreach (var c in strArr[1])
         {
-            return string.Empty;
-        }
-        int len = words[0].Where(c => !char.IsPunctuation(c)).Count();
-        int returnIndex = 0;
-        for (int i = 1; i < words.Length; ++i)
-        {
-            int iLen = words[i].Where(c => !char.IsPunctuation(c)).Count();
-            if (iLen > len)
+            if (!kDictionary.ContainsKey(c))
             {
-                returnIndex = i;
-                len = iLen;
+                kDictionary[c] = 1;
+            }
+            else
+            {
+                ++kDictionary[c];
             }
         }
-        return words[returnIndex];
+        for (int i = 0; i <= strArr[0].Length - strArr[1].Length; ++i)
+        {
+            if (!kDictionary.ContainsKey(strArr[0][i]))
+            {
+                continue;
+            }
+            for (int j = strArr[1].Length; j <= strArr[0].Length - i; ++j)
+            {
+                var substring = strArr[0].Substring(i, j);
+                bool isValid = true;
+                foreach (var key in kDictionary.Keys)
+                {
+                    if (substring.Where(c => c == key).Count() < kDictionary[key])
+                    {
+                        isValid = false;
+                        break;
+                    }
+                }
+                if (isValid && substring.Length < returnString.Length)
+                {
+                    returnString = substring;
+                    break;
+                }
+            }
+        }
+        return returnString;
     }
 
     static void Main()
     {
-
+        var input = new string[] { "aaffsfsfasfasfasfasfasfacasfafe", "fafe" };
         // keep this function call here
-        Console.WriteLine(LongestWord(Console.ReadLine()));
+        Console.WriteLine(MinWindowSubstring(input));
 
     }
 }
