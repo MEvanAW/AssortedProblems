@@ -21,6 +21,7 @@ Console app for coderbyte technical assessment or similar.
   - [Longest Word](#longest-word)
   - [Min Window Substring](#min-window-substring)
   - [Tree Constructor](#tree-constructor)
+  - [Bracket Matcher](#bracket-matcher)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -159,3 +160,7 @@ https://coderbyte.com/information/Min%20Window%20Substring
 https://coderbyte.com/information/Tree%20Constructor
 
 `git checkout a459715d113e3d412a680e9b405b8583cb7edffe`
+### Bracket Matcher
+https://coderbyte.com/information/Bracket%20Matcher
+
+`git checkout 0eabd0c37a557498fde47e89a95fb0858f1a7e2c`
