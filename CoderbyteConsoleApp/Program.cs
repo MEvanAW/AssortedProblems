@@ -1,37 +1,62 @@
-﻿// https://coderbyte.com/information/Bracket%20Matcher
+﻿// https://coderbyte.com/information/Bracket%20Combinations
 using System;
 using System.Linq;
 
 class MainClass
 {
-    public const string ZERO = "0";
-    public const string ONE = "1";
-    public static string BracketMatcher(string str)
+    public static int BracketCombinations(int num)
+    {
+        if (num == 0)
+        {
+            return 1;
+        }
+        int validCount = 0;
+        int all = 2;
+        for (int i = 1; i < num*2; ++i)
+        {
+            all *= 2;
+        }
+        for (int i = 1; i < all; ++i)
+        {
+            string combination = Convert.ToString(Convert.ToUInt32(i), toBase: 2).PadLeft(2*num, '0');
+            // 0 is (, 1 is ).
+            int count = combination.Where(c => c == '0').Count();
+            if (count != num)
+            {
+                continue;
+            }
+            if (BracketMatcher(combination))
+            {
+                validCount++;
+            }
+        }
+        return validCount;
+    }
+
+    public static bool BracketMatcher(string str)
     {
         int bracketCount = 0;
         foreach (char c in str)
         {
-            if (c == '(')
+            if (c == '0')
             {
                 ++bracketCount;
             }
-            else if (c == ')')
+            else if (c == '1')
             {
                 --bracketCount;
             }
             if (bracketCount < 0)
             {
-                return ZERO;
+                return false;
             }
         }
-        return bracketCount == 0 ? ONE : ZERO;
+        return bracketCount == 0;
     }
 
     static void Main()
     {
-
-        // keep this function call here
-        Console.WriteLine(BracketMatcher(Console.ReadLine()));
-
+        int input = 3;
+        Console.WriteLine(BracketCombinations(input));
     }
 }
