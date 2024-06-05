@@ -1,57 +1,85 @@
-﻿// https://coderbyte.com/information/Min%20Window%20Substring
+﻿// https://coderbyte.com/information/Tree%20Constructor
 using System;
 using System.Linq;
 
 class MainClass
 {
-    public static string MinWindowSubstring(string[] strArr)
+    public const string TRUE_STRING = "true";
+    public const string FALSE_STRING = "false";
+
+    public static string TreeConstructor(string[] strArr)
     {
-        var kDictionary = new Dictionary<char, int>();
-        var returnString = strArr[0];
-        foreach (var c in strArr[1])
+        // key = parent; value = children
+        var childrenDictionary = new Dictionary<string, List<string>>();
+        // key = child; value = parent
+        var parentDictionary = new Dictionary<string, string>();
+        foreach (var str in strArr)
         {
-            if (!kDictionary.ContainsKey(c))
+            var edge = str.Substring(1, str.Length - 2).Split(',');
+            if (parentDictionary.ContainsKey(edge[0]))
             {
-                kDictionary[c] = 1;
+                // Each child must only have a single parent
+                return FALSE_STRING;
             }
             else
             {
-                ++kDictionary[c];
+                parentDictionary[edge[0]] = edge[1];
+            }
+            if (childrenDictionary.ContainsKey(edge[1]))
+            {
+                childrenDictionary[edge[1]].Add(edge[0]);
+            }
+            else
+            {
+                childrenDictionary[edge[1]] = new List<string>() { edge[0] };
             }
         }
-        for (int i = 0; i <= strArr[0].Length - strArr[1].Length; ++i)
+        var allVertexSet = new HashSet<string>(childrenDictionary.Keys);
+        foreach (var children in childrenDictionary.Values)
         {
-            if (!kDictionary.ContainsKey(strArr[0][i]))
+            allVertexSet.UnionWith(children);
+        }
+        bool isOrphan = true;
+        foreach (var family in childrenDictionary)
+        {
+            // Each parent must have no more than 2 children
+            if (family.Value.Count() > 2)
+            {
+                return FALSE_STRING;
+            }
+            // There must be no orphan
+            if (!isOrphan)
             {
                 continue;
             }
-            for (int j = strArr[1].Length; j <= strArr[0].Length - i; ++j)
+            var treeVertexSet = new HashSet<string>();
+            PopulateSet(family.Key, treeVertexSet, childrenDictionary);
+            if (allVertexSet.SetEquals(treeVertexSet))
             {
-                var substring = strArr[0].Substring(i, j);
-                bool isValid = true;
-                foreach (var key in kDictionary.Keys)
-                {
-                    if (substring.Where(c => c == key).Count() < kDictionary[key])
-                    {
-                        isValid = false;
-                        break;
-                    }
-                }
-                if (isValid && substring.Length < returnString.Length)
-                {
-                    returnString = substring;
-                    break;
-                }
+                isOrphan = false;
             }
         }
-        return returnString;
+
+        return isOrphan ? FALSE_STRING : TRUE_STRING;
+    }
+
+    public static void PopulateSet(string root, HashSet<string> set, Dictionary<string,List<string>> dictionary)
+    {
+        set.Add(root);
+        if (dictionary.ContainsKey(root))
+        {
+            foreach (var child in dictionary[root])
+            {
+                PopulateSet(child, set, dictionary);
+            }
+        }
     }
 
     static void Main()
     {
-        var input = new string[] { "aaffsfsfasfasfasfasfasfacasfafe", "fafe" };
+        var input = new string[] { "(1,2)", "(3,2)", "(2,12)", "(5,2)" };
         // keep this function call here
-        Console.WriteLine(MinWindowSubstring(input));
+        Console.WriteLine(TreeConstructor(input));
 
     }
 }
