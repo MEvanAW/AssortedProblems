@@ -26,6 +26,7 @@ Console app for coderbyte technical assessment or similar.
   - [Plus Minus](#plus-minus)
   - [Mini-Max Sum](#mini-max-sum)
   - [Time Conversion](#time-conversion)
+  - [Lonely Integer](#lonely-integer)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -184,3 +185,7 @@ https://www.hackerrank.com/challenges/one-week-preparation-kit-mini-max-sum/prob
 https://www.hackerrank.com/challenges/one-week-preparation-kit-time-conversion/problem
 
 `git checkout 4b9a7c01ac922942f8a8310ea20e660c2359fc32`
+### Lonely Integer
+https://www.hackerrank.com/challenges/one-week-preparation-kit-lonely-integer/problem
+
+`git checkout 61ae226403864cdf018bff2ca792ea4fae8fee77`
