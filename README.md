@@ -23,6 +23,8 @@ Console app for coderbyte technical assessment or similar.
   - [Tree Constructor](#tree-constructor)
   - [Bracket Matcher](#bracket-matcher)
   - [Bracket Combinations](#bracket-combinations)
+  - [Plus Minus](#plus-minus)
+  - [Mini-Max Sum](#mini-max-sum)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -169,3 +171,11 @@ https://coderbyte.com/information/Bracket%20Matcher
 https://coderbyte.com/information/Bracket%20Combinations
 
 `git checkout f77e26f79dcb62a6ca31a8e985b8e5ba4840e24a`
+### Plus Minus
+https://www.hackerrank.com/challenges/one-week-preparation-kit-plus-minus/problem
+
+`git checkout e382716943a5c7b8e64446b9b644e0c6913ea7d7`
+### Mini-Max Sum
+https://www.hackerrank.com/challenges/one-week-preparation-kit-mini-max-sum/problem
+
+`git checkout 375c53ed96ab4c1d2b3e12ae5afa861cc767a320`
