@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/challenges/one-week-preparation-kit-time-conversion/problem
+﻿// https://www.hackerrank.com/challenges/one-week-preparation-kit-lonely-integer/problem
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -15,38 +15,29 @@ using System;
 
 class Result
 {
-    public const string ZERO = "00";
-    public const string TWELVE = "12";
-    public const int AP_INDEX = 8;
-    public const char A = 'A';
-    public const char P = 'P';
 
     /*
-     * Complete the 'timeConversion' function below.
+     * Complete the 'lonelyinteger' function below.
      *
-     * The function is expected to return a STRING.
-     * The function accepts STRING s as parameter.
+     * The function is expected to return an INTEGER.
+     * The function accepts INTEGER_ARRAY a as parameter.
      */
 
-    public static string timeConversion(string s)
+    public static int lonelyinteger(List<int> a)
     {
-        string hour = s.Substring(0, 2);
-        if (hour == TWELVE)
+        var countDictionary = new Dictionary<int, int>();
+        foreach (int i in a)
         {
-            if (s[8] == A)
+            if (countDictionary.ContainsKey(i))
             {
-                return string.Concat(ZERO, s.Substring(2, 6));
+                ++countDictionary[i];
             }
             else
             {
-                return string.Concat(TWELVE, s.Substring(2, 6));
+                countDictionary[i] = 1;
             }
         }
-        if (s[8] == P)
-        {
-            return string.Concat(int.Parse(hour)+12, s.Substring(2, 6));
-        }
-        return s.Substring(0, 8);
+        return countDictionary.Where(i => i.Value == 1).Single().Key;
     }
 
 }
@@ -55,9 +46,11 @@ class Solution
 {
     public static void Main(string[] args)
     {
-        string s = Console.ReadLine();
+        int n = Convert.ToInt32(Console.ReadLine().Trim());
 
-        string result = Result.timeConversion(s);
+        List<int> a = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(aTemp => Convert.ToInt32(aTemp)).ToList();
+
+        int result = Result.lonelyinteger(a);
 
         Console.WriteLine(result);
     }
