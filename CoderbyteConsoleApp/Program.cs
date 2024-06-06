@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/challenges/one-week-preparation-kit-plus-minus/problem
+﻿// https://www.hackerrank.com/challenges/one-week-preparation-kit-mini-max-sum/problem
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -15,36 +15,20 @@ using System;
 
 class Result
 {
-    public const string FORMAT = "F6";
+    public const string WRITE_FORMAT = "{0} {1}";
 
     /*
-     * Complete the 'plusMinus' function below.
+     * Complete the 'miniMaxSum' function below.
      *
      * The function accepts INTEGER_ARRAY arr as parameter.
      */
 
-    public static void plusMinus(List<int> arr)
+    public static void miniMaxSum(List<int> arr)
     {
-        // positives, negatives, zeros
-        int[] counts = new int[3];
-        foreach (int i in arr)
-        {
-            if (i > 0)
-            {
-                ++counts[0];
-            }
-            else if (i == 0)
-            {
-                ++counts[2];
-            }
-            else
-            {
-                ++counts[1];
-            }
-        }
-        Console.WriteLine(((decimal) counts[0] / arr.Count()).ToString(FORMAT));
-        Console.WriteLine(((decimal) counts[1] / arr.Count()).ToString(FORMAT));
-        Console.WriteLine(((decimal) counts[2] / arr.Count()).ToString(FORMAT));
+        arr.Sort();
+        long min = (long) arr[0] + (long) arr[1] + (long) arr[2] + (long) arr[3];
+        long max = (long) arr[1] + (long) arr[2] + (long) arr[3] + (long) arr[4];
+        Console.Write(string.Format(WRITE_FORMAT, min, max));
     }
 
 }
@@ -53,10 +37,9 @@ class Solution
 {
     public static void Main(string[] args)
     {
-        int n = Convert.ToInt32(Console.ReadLine().Trim());
 
         List<int> arr = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList();
 
-        Result.plusMinus(arr);
+        Result.miniMaxSum(arr);
     }
 }
