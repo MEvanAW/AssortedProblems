@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/challenges/one-week-preparation-kit-mini-max-sum/problem
+﻿// https://www.hackerrank.com/challenges/one-week-preparation-kit-time-conversion/problem
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -15,20 +15,38 @@ using System;
 
 class Result
 {
-    public const string WRITE_FORMAT = "{0} {1}";
+    public const string ZERO = "00";
+    public const string TWELVE = "12";
+    public const int AP_INDEX = 8;
+    public const char A = 'A';
+    public const char P = 'P';
 
     /*
-     * Complete the 'miniMaxSum' function below.
+     * Complete the 'timeConversion' function below.
      *
-     * The function accepts INTEGER_ARRAY arr as parameter.
+     * The function is expected to return a STRING.
+     * The function accepts STRING s as parameter.
      */
 
-    public static void miniMaxSum(List<int> arr)
+    public static string timeConversion(string s)
     {
-        arr.Sort();
-        long min = (long) arr[0] + (long) arr[1] + (long) arr[2] + (long) arr[3];
-        long max = (long) arr[1] + (long) arr[2] + (long) arr[3] + (long) arr[4];
-        Console.Write(string.Format(WRITE_FORMAT, min, max));
+        string hour = s.Substring(0, 2);
+        if (hour == TWELVE)
+        {
+            if (s[8] == A)
+            {
+                return string.Concat(ZERO, s.Substring(2, 6));
+            }
+            else
+            {
+                return string.Concat(TWELVE, s.Substring(2, 6));
+            }
+        }
+        if (s[8] == P)
+        {
+            return string.Concat(int.Parse(hour)+12, s.Substring(2, 6));
+        }
+        return s.Substring(0, 8);
     }
 
 }
@@ -37,9 +55,10 @@ class Solution
 {
     public static void Main(string[] args)
     {
+        string s = Console.ReadLine();
 
-        List<int> arr = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList();
+        string result = Result.timeConversion(s);
 
-        Result.miniMaxSum(arr);
+        Console.WriteLine(result);
     }
 }
