@@ -27,6 +27,7 @@ Console app for coderbyte technical assessment or similar.
   - [Mini-Max Sum](#mini-max-sum)
   - [Time Conversion](#time-conversion)
   - [Lonely Integer](#lonely-integer)
+  - [Diagonal Difference](#diagonal-difference)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -189,3 +190,7 @@ https://www.hackerrank.com/challenges/one-week-preparation-kit-time-conversion/p
 https://www.hackerrank.com/challenges/one-week-preparation-kit-lonely-integer/problem
 
 `git checkout 61ae226403864cdf018bff2ca792ea4fae8fee77`
+### Diagonal Difference
+https://www.hackerrank.com/challenges/one-week-preparation-kit-diagonal-difference/problem
+
+`git checkout 20ff199efff9a4d61a8447bf2e93c05db161620c`
