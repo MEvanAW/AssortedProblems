@@ -25,6 +25,7 @@ Console app for coderbyte technical assessment or similar.
   - [Bracket Combinations](#bracket-combinations)
   - [Plus Minus](#plus-minus)
   - [Mini-Max Sum](#mini-max-sum)
+  - [Time Conversion](#time-conversion)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -179,3 +180,7 @@ https://www.hackerrank.com/challenges/one-week-preparation-kit-plus-minus/proble
 https://www.hackerrank.com/challenges/one-week-preparation-kit-mini-max-sum/problem
 
 `git checkout 375c53ed96ab4c1d2b3e12ae5afa861cc767a320`
+### Time Conversion
+https://www.hackerrank.com/challenges/one-week-preparation-kit-time-conversion/problem
+
+`git checkout 4b9a7c01ac922942f8a8310ea20e660c2359fc32`
