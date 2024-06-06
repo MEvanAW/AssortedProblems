@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/challenges/one-week-preparation-kit-diagonal-difference/problem
+﻿// https://www.hackerrank.com/challenges/one-week-preparation-kit-countingsort1/problem
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -17,21 +17,20 @@ class Result
 {
 
     /*
-     * Complete the 'diagonalDifference' function below.
+     * Complete the 'countingSort' function below.
      *
-     * The function is expected to return an INTEGER.
-     * The function accepts 2D_INTEGER_ARRAY arr as parameter.
+     * The function is expected to return an INTEGER_ARRAY.
+     * The function accepts INTEGER_ARRAY arr as parameter.
      */
 
-    public static int diagonalDifference(List<List<int>> arr)
+    public static List<int> countingSort(List<int> arr)
     {
-        int len = arr.Count();
-        int difference = 0;
-        for (int i = 0; i < len; i++)
+        var countArray = new int[100];
+        foreach (int i in arr)
         {
-            difference += arr[i][i] - arr[i][len-i-1];
+            ++countArray[i];
         }
-        return difference >= 0 ? difference : difference * -1;
+        return countArray.ToList();
     }
 
 }
@@ -42,15 +41,10 @@ class Solution
     {
         int n = Convert.ToInt32(Console.ReadLine().Trim());
 
-        List<List<int>> arr = new List<List<int>>();
+        List<int> arr = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList();
 
-        for (int i = 0; i < n; i++)
-        {
-            arr.Add(Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList());
-        }
+        List<int> result = Result.countingSort(arr);
 
-        int result = Result.diagonalDifference(arr);
-
-        Console.WriteLine(result);
+        Console.WriteLine(String.Join(" ", result));
     }
 }
