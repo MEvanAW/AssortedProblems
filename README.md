@@ -28,6 +28,7 @@ Console app for coderbyte technical assessment or similar.
   - [Time Conversion](#time-conversion)
   - [Lonely Integer](#lonely-integer)
   - [Diagonal Difference](#diagonal-difference)
+  - [Counting Sort 1](#counting-sort-1)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -194,3 +195,7 @@ https://www.hackerrank.com/challenges/one-week-preparation-kit-lonely-integer/pr
 https://www.hackerrank.com/challenges/one-week-preparation-kit-diagonal-difference/problem
 
 `git checkout 20ff199efff9a4d61a8447bf2e93c05db161620c`
+### Counting Sort 1
+https://www.hackerrank.com/challenges/one-week-preparation-kit-countingsort1/problem
+
+`git checkout 3ebaa1536fc419bcf08423278c4a3b0d90726fc4`
