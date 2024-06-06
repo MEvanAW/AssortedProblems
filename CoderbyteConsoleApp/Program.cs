@@ -1,62 +1,62 @@
-﻿// https://coderbyte.com/information/Bracket%20Combinations
-using System;
+﻿// https://www.hackerrank.com/challenges/one-week-preparation-kit-plus-minus/problem
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
 
-class MainClass
+class Result
 {
-    public static int BracketCombinations(int num)
+    public const string FORMAT = "F6";
+
+    /*
+     * Complete the 'plusMinus' function below.
+     *
+     * The function accepts INTEGER_ARRAY arr as parameter.
+     */
+
+    public static void plusMinus(List<int> arr)
     {
-        if (num == 0)
+        // positives, negatives, zeros
+        int[] counts = new int[3];
+        foreach (int i in arr)
         {
-            return 1;
-        }
-        int validCount = 0;
-        int all = 2;
-        for (int i = 1; i < num*2; ++i)
-        {
-            all *= 2;
-        }
-        for (int i = 1; i < all; ++i)
-        {
-            string combination = Convert.ToString(Convert.ToUInt32(i), toBase: 2).PadLeft(2*num, '0');
-            // 0 is (, 1 is ).
-            int count = combination.Where(c => c == '0').Count();
-            if (count != num)
+            if (i > 0)
             {
-                continue;
+                ++counts[0];
             }
-            if (BracketMatcher(combination))
+            else if (i == 0)
             {
-                validCount++;
+                ++counts[2];
+            }
+            else
+            {
+                ++counts[1];
             }
         }
-        return validCount;
+        Console.WriteLine(((decimal) counts[0] / arr.Count()).ToString(FORMAT));
+        Console.WriteLine(((decimal) counts[1] / arr.Count()).ToString(FORMAT));
+        Console.WriteLine(((decimal) counts[2] / arr.Count()).ToString(FORMAT));
     }
 
-    public static bool BracketMatcher(string str)
-    {
-        int bracketCount = 0;
-        foreach (char c in str)
-        {
-            if (c == '0')
-            {
-                ++bracketCount;
-            }
-            else if (c == '1')
-            {
-                --bracketCount;
-            }
-            if (bracketCount < 0)
-            {
-                return false;
-            }
-        }
-        return bracketCount == 0;
-    }
+}
 
-    static void Main()
+class Solution
+{
+    public static void Main(string[] args)
     {
-        int input = 3;
-        Console.WriteLine(BracketCombinations(input));
+        int n = Convert.ToInt32(Console.ReadLine().Trim());
+
+        List<int> arr = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList();
+
+        Result.plusMinus(arr);
     }
 }
