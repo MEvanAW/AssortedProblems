@@ -31,6 +31,7 @@ Console app for coderbyte technical assessment or similar.
   - [Counting Sort 1](#counting-sort-1)
   - [Zig Zag Sequence](#zig-zag-sequence)
   - [Tower Breakers](#tower-breakers)
+  - [Caesar Cipher](#caesar-cipher)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -214,3 +215,7 @@ Assuming P1 and P2 both play optimally,
 * If number of tower is odd, P1 always win because P1 first move will be reducing a tower to height of 1, effectively making it an even tower game. P1 mimics P2 moves until P2 inevitably run out of moves.
 
 `git checkout 74be9fea213609ef30c3aaa2b43991ed2878adc9`
+### Caesar Cipher
+https://www.hackerrank.com/challenges/one-week-preparation-kit-caesar-cipher-1/problem
+
+`git checkout 1d43050cf4eeeee6d99c0c6feb56ec65563a41c1`
