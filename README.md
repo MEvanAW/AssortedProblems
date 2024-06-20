@@ -29,6 +29,7 @@ Console app for coderbyte technical assessment or similar.
   - [Lonely Integer](#lonely-integer)
   - [Diagonal Difference](#diagonal-difference)
   - [Counting Sort 1](#counting-sort-1)
+  - [Zig Zag Sequence](#zig-zag-sequence)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -199,3 +200,7 @@ https://www.hackerrank.com/challenges/one-week-preparation-kit-diagonal-differen
 https://www.hackerrank.com/challenges/one-week-preparation-kit-countingsort1/problem
 
 `git checkout 3ebaa1536fc419bcf08423278c4a3b0d90726fc4`
+### Zig Zag Sequence
+https://www.hackerrank.com/challenges/one-week-preparation-kit-zig-zag-sequence/problem
+
+`git checkout 5a6c531c5c01d37dd92b483a132d15c47438b3e9`
