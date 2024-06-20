@@ -30,6 +30,7 @@ Console app for coderbyte technical assessment or similar.
   - [Diagonal Difference](#diagonal-difference)
   - [Counting Sort 1](#counting-sort-1)
   - [Zig Zag Sequence](#zig-zag-sequence)
+  - [Tower Breakers](#tower-breakers)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -204,3 +205,12 @@ https://www.hackerrank.com/challenges/one-week-preparation-kit-countingsort1/pro
 https://www.hackerrank.com/challenges/one-week-preparation-kit-zig-zag-sequence/problem
 
 `git checkout 5a6c531c5c01d37dd92b483a132d15c47438b3e9`
+### Tower Breakers
+https://www.hackerrank.com/challenges/one-week-preparation-kit-tower-breakers-1/problem
+
+Assuming P1 and P2 both play optimally,
+* If height of tower is 1, P2 always win because P1 unable to move.
+* If number of tower is even, P2 always win because P2 can mimic P1 moves until P1 inevitably run out of moves.
+* If number of tower is odd, P1 always win because P1 first move will be reducing a tower to height of 1, effectively making it an even tower game. P1 mimics P2 moves until P2 inevitably run out of moves.
+
+`git checkout 74be9fea213609ef30c3aaa2b43991ed2878adc9`
