@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/challenges/one-week-preparation-kit-tower-breakers-1/problem
+﻿// https://www.hackerrank.com/challenges/one-week-preparation-kit-caesar-cipher-1/problem
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -17,21 +17,44 @@ class Result
 {
 
     /*
-     * Complete the 'towerBreakers' function below.
+     * Complete the 'caesarCipher' function below.
      *
-     * The function is expected to return an INTEGER.
+     * The function is expected to return a STRING.
      * The function accepts following parameters:
-     *  1. INTEGER n
-     *  2. INTEGER m
+     *  1. STRING s
+     *  2. INTEGER k
      */
 
-    public static int towerBreakers(int n, int m)
+    public static string caesarCipher(string s, int k)
     {
-        if (m == 1 || n % 2 == 0)
+        int shift = k % 26;
+        string cipherText = string.Empty;
+        foreach (char c in s)
         {
-            return 2;
+            if (char.IsLower(c))
+            {
+                var cipherC = c + shift;
+                if (cipherC > 'z')
+                {
+                    cipherC -= 26;
+                }
+                cipherText += Convert.ToChar(cipherC);
+            }
+            else if (char.IsUpper(c))
+            {
+                var cipherC = c + shift;
+                if (cipherC > 'Z')
+                {
+                    cipherC -= 26;
+                }
+                cipherText += Convert.ToChar(cipherC);
+            }
+            else
+            {
+                cipherText += c;
+            }
         }
-        return 1;
+        return cipherText;
     }
 
 }
@@ -42,20 +65,15 @@ class Solution
     {
         TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
 
-        int t = Convert.ToInt32(Console.ReadLine().Trim());
+        int n = Convert.ToInt32(Console.ReadLine().Trim());
 
-        for (int tItr = 0; tItr < t; tItr++)
-        {
-            string[] firstMultipleInput = Console.ReadLine().TrimEnd().Split(' ');
+        string s = Console.ReadLine();
 
-            int n = Convert.ToInt32(firstMultipleInput[0]);
+        int k = Convert.ToInt32(Console.ReadLine().Trim());
 
-            int m = Convert.ToInt32(firstMultipleInput[1]);
+        string result = Result.caesarCipher(s, k);
 
-            int result = Result.towerBreakers(n, m);
-
-            textWriter.WriteLine(result);
-        }
+        textWriter.WriteLine(result);
 
         textWriter.Flush();
         textWriter.Close();
