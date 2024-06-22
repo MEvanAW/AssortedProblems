@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/challenges/one-week-preparation-kit-recursive-digit-sum/problem
+﻿// https://www.hackerrank.com/challenges/one-week-preparation-kit-new-year-chaos/problem
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -15,60 +15,69 @@ using System;
 
 class Result
 {
-
+    private const string TOO_CHAOTIC = "Too chaotic";
     /*
-     * Complete the 'superDigit' function below.
+     * Complete the 'minimumBribes' function below.
      *
-     * The function is expected to return an INTEGER.
-     * The function accepts following parameters:
-     *  1. STRING n
-     *  2. INTEGER k
+     * The function accepts INTEGER_ARRAY q as parameter.
      */
-
-    public static int superDigit(string n, int k)
+    public static void minimumBribes(List<int> q)
     {
         long sum = 0;
-        foreach (char c in n)
+        var bribedSet = new HashSet<int>();
+        var briberSet = new HashSet<int>();
+        for (int i = 0; i < q.Count(); ++i)
         {
-            sum += long.Parse(c.ToString());
+            if (q[i] > i + 3)
+            {
+                Console.WriteLine(TOO_CHAOTIC);
+                return;
+            }
+            int diff = q[i] - i - 1;
+            // one-way bribe check
+            if (diff > 0)
+            {
+                sum += diff;
+                briberSet.Add(q[i]);
+            }
+            if (diff != 0)
+            {
+                if (!briberSet.Contains(i + 1))
+                {
+                    bribedSet.Add(i + 1);
+                }
+            }
+            // bribe and bribed check
+            if (diff <= 0)
+            {
+                diff = bribedSet.Where(b => b < q[i]).Count();
+                if (diff > 2)
+                {
+                    Console.WriteLine(TOO_CHAOTIC);
+                    return;
+                }
+                sum += diff;
+            }
+            bribedSet.Remove(q[i]);
         }
-        sum *= k;
-        return Convert.ToInt32(Recurse(sum));
+        Console.WriteLine(sum);
     }
 
-    private static long Recurse(long sum)
-    {
-        if (sum < 10)
-        {
-            return sum;
-        }
-        string n = sum.ToString();
-        long superDigit = 0;
-        foreach (char c in n)
-        {
-            superDigit += long.Parse(c.ToString());
-        }
-        return Recurse(superDigit);
-    }
 }
 
 class Solution
 {
     public static void Main(string[] args)
     {
-        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+        int t = Convert.ToInt32(Console.ReadLine().Trim());
 
-        string[] firstMultipleInput = Console.ReadLine().TrimEnd().Split(' ');
+        for (int tItr = 0; tItr < t; tItr++)
+        {
+            int n = Convert.ToInt32(Console.ReadLine().Trim());
 
-        string n = firstMultipleInput[0];
+            List<int> q = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(qTemp => Convert.ToInt32(qTemp)).ToList();
 
-        int k = Convert.ToInt32(firstMultipleInput[1]);
-
-        int result = Result.superDigit(n, k);
-
-        textWriter.WriteLine(result);
-
-        textWriter.Flush();
-        textWriter.Close();
+            Result.minimumBribes(q);
+        }
     }
 }
