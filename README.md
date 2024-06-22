@@ -32,6 +32,7 @@ Console app for coderbyte technical assessment or similar.
   - [Zig Zag Sequence](#zig-zag-sequence)
   - [Tower Breakers](#tower-breakers)
   - [Caesar Cipher](#caesar-cipher)
+  - [Grid Challenge](#grid-challenge)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -219,3 +220,7 @@ Assuming P1 and P2 both play optimally,
 https://www.hackerrank.com/challenges/one-week-preparation-kit-caesar-cipher-1/problem
 
 `git checkout 1d43050cf4eeeee6d99c0c6feb56ec65563a41c1`
+### Grid Challenge
+https://www.hackerrank.com/challenges/one-week-preparation-kit-grid-challenge/problem
+
+`git checkout ae3111cdda6661408ab7926f10cda918484009a6`
