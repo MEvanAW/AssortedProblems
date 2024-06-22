@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/challenges/one-week-preparation-kit-grid-challenge/problem
+﻿// https://www.hackerrank.com/challenges/one-week-preparation-kit-recursive-digit-sum/problem
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -17,37 +17,39 @@ class Result
 {
 
     /*
-     * Complete the 'gridChallenge' function below.
+     * Complete the 'superDigit' function below.
      *
-     * The function is expected to return a STRING.
-     * The function accepts STRING_ARRAY grid as parameter.
+     * The function is expected to return an INTEGER.
+     * The function accepts following parameters:
+     *  1. STRING n
+     *  2. INTEGER k
      */
 
-    public static string gridChallenge(List<string> grid)
+    public static int superDigit(string n, int k)
     {
-        int rowCount = grid.Count();
-        for (int row = 0; row < rowCount; ++row)
+        long sum = 0;
+        foreach (char c in n)
         {
-            var charList = grid[row].ToList();
-            charList.Sort();
-            grid[row] = string.Concat(charList);
+            sum += long.Parse(c.ToString());
         }
-        int colCount = grid[0].Count();
-        for (int col = 0; col < colCount; ++col)
-        {
-            char previous = 'a';
-            for (int row = 0; row < rowCount; ++row)
-            {
-                if (grid[row][col] < previous)
-                {
-                    return "NO";
-                }
-                previous = grid[row][col];
-            }
-        }
-        return "YES";
+        sum *= k;
+        return Convert.ToInt32(Recurse(sum));
     }
 
+    private static long Recurse(long sum)
+    {
+        if (sum < 10)
+        {
+            return sum;
+        }
+        string n = sum.ToString();
+        long superDigit = 0;
+        foreach (char c in n)
+        {
+            superDigit += long.Parse(c.ToString());
+        }
+        return Recurse(superDigit);
+    }
 }
 
 class Solution
@@ -56,24 +58,15 @@ class Solution
     {
         TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
 
-        int t = Convert.ToInt32(Console.ReadLine().Trim());
+        string[] firstMultipleInput = Console.ReadLine().TrimEnd().Split(' ');
 
-        for (int tItr = 0; tItr < t; tItr++)
-        {
-            int n = Convert.ToInt32(Console.ReadLine().Trim());
+        string n = firstMultipleInput[0];
 
-            List<string> grid = new List<string>();
+        int k = Convert.ToInt32(firstMultipleInput[1]);
 
-            for (int i = 0; i < n; i++)
-            {
-                string gridItem = Console.ReadLine();
-                grid.Add(gridItem);
-            }
+        int result = Result.superDigit(n, k);
 
-            string result = Result.gridChallenge(grid);
-
-            textWriter.WriteLine(result);
-        }
+        textWriter.WriteLine(result);
 
         textWriter.Flush();
         textWriter.Close();
