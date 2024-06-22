@@ -34,6 +34,7 @@ Console app for coderbyte technical assessment or similar.
   - [Caesar Cipher](#caesar-cipher)
   - [Grid Challenge](#grid-challenge)
   - [Recursive Digit Sum](#recursive-digit-sum)
+  - [New Year Chaos](#new-year-chaos)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -229,3 +230,7 @@ https://www.hackerrank.com/challenges/one-week-preparation-kit-grid-challenge/pr
 https://www.hackerrank.com/challenges/one-week-preparation-kit-recursive-digit-sum/problem
 
 `git checkout 4ba9d31308b7b6228ab4e4faa2997c25bd5a5ca4`
+### New Year Chaos
+https://www.hackerrank.com/challenges/one-week-preparation-kit-new-year-chaos/problem
+
+`git checkout ef62694d28776f92895f3bd0769e8e25cd7bf5e4`
