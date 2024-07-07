@@ -1,91 +1,47 @@
-﻿// https://www.hackerrank.com/challenges/one-week-preparation-kit-balanced-brackets/problem
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Collections;
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.Serialization;
-using System.Text.RegularExpressions;
-using System.Text;
+﻿// https://www.hackerrank.com/challenges/one-week-preparation-kit-simple-text-editor/problem
 using System;
-
-class Result
+using System.Collections.Generic;
+using System.IO;
+class Solution
 {
-    const string NO = "NO";
-    const string YES = "YES";
+    const string APPEND = "1";
+    const string DELETE = "2";
+    const string PRINT = "3";
+    //const string UNDO = "4";
 
-    /*
-     * Complete the 'isBalanced' function below.
-     *
-     * The function is expected to return a STRING.
-     * The function accepts STRING s as parameter.
-     */
-    public static string isBalanced(string s)
+    static void Main(String[] args)
     {
-        var opening = new char[]
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */
+        int Q = int.Parse(Console.ReadLine());
+        var ops = new string[Q];
+        for (int i = 0; i < Q; ++i)
         {
-            '(',
-            '[',
-            '{'
-        };
-        var stack = new Stack<char>(s.Count()/2);
-        foreach (char c in s)
+            ops[i] = Console.ReadLine();
+        }
+        string S = string.Empty;
+        var stack = new Stack<string>();
+        stack.Push(S);
+        foreach (string op in ops)
         {
-            if (opening.Contains(c))
+            var opArr = op.Split(' ');
+            if (opArr[0] == APPEND)
             {
-                stack.Push(c);
+                stack.Push(S);
+                S += opArr[1];
             }
-            else if (stack.Count <= 0)
+            else if (opArr[0] == DELETE)
             {
-                return NO;
+                stack.Push(S);
+                S = S.Remove(S.Length - int.Parse(opArr[1]));
+            }
+            else if (opArr[0] == PRINT)
+            {
+                Console.WriteLine(S[int.Parse(opArr[1]) - 1]);
             }
             else
             {
-                var peek = stack.Peek();
-                if (peek == '(' && c != ')')
-                {
-                    return NO;
-                }
-                else if (peek == '[' && c != ']')
-                {
-                    return NO;
-                }
-                else if (peek == '{' && c != '}')
-                {
-                    return NO;
-                }
-                stack.Pop();
+                S = stack.Pop();
             }
-        }
-        if (stack.Count > 0)
-        {
-            return NO;
-        }
-        return YES;
-    }
-}
-
-class Solution
-{
-    public static void Main(string[] args)
-    {
-        int t = Convert.ToInt32(Console.ReadLine().Trim());
-        List<string> toBeWritten = new();
-        for (int tItr = 0; tItr < t; tItr++)
-        {
-            string s = Console.ReadLine();
-
-            string result = Result.isBalanced(s);
-
-            toBeWritten.Add(result);
-        }
-        foreach (var s in toBeWritten)
-        {
-            Console.WriteLine(s);
         }
     }
 }
