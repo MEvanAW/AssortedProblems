@@ -37,6 +37,7 @@ Console app for coderbyte technical assessment or similar.
   - [New Year Chaos](#new-year-chaos)
   - [Merge Two Sorted Linked Lists](#merge-two-sorted-linked-lists)
   - [Queue](#queue)
+  - [Balanced Brackets](#balanced-brackets)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -246,3 +247,8 @@ https://www.hackerrank.com/challenges/one-week-preparation-kit-merge-two-sorted-
 https://www.hackerrank.com/challenges/one-week-preparation-kit-queue-using-two-stacks/problem
 
 `git checkout b9e7a6dbb6d5bdf82e4cf13735497933b0cc2238`
+
+### Balanced Brackets
+https://www.hackerrank.com/challenges/one-week-preparation-kit-balanced-brackets/problem
+
+`git checkout beafb9bbddfeae661ca75ca364f2e290e0e0d059`
