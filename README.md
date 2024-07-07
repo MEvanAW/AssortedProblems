@@ -38,6 +38,7 @@ Console app for coderbyte technical assessment or similar.
   - [Merge Two Sorted Linked Lists](#merge-two-sorted-linked-lists)
   - [Queue](#queue)
   - [Balanced Brackets](#balanced-brackets)
+  - [Simple Text Editor](#simple-text-editor)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -252,3 +253,8 @@ https://www.hackerrank.com/challenges/one-week-preparation-kit-queue-using-two-s
 https://www.hackerrank.com/challenges/one-week-preparation-kit-balanced-brackets/problem
 
 `git checkout beafb9bbddfeae661ca75ca364f2e290e0e0d059`
+
+### Simple Text Editor
+https://www.hackerrank.com/challenges/one-week-preparation-kit-simple-text-editor/problem
+
+`git checkout f05229d72fb64dcb16820b34c77615817bb8028b`
