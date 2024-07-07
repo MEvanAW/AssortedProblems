@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/challenges/one-week-preparation-kit-new-year-chaos/problem
+﻿// https://www.hackerrank.com/challenges/one-week-preparation-kit-merge-two-sorted-linked-lists/problem
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -13,71 +13,149 @@ using System.Text.RegularExpressions;
 using System.Text;
 using System;
 
-class Result
-{
-    private const string TOO_CHAOTIC = "Too chaotic";
-    /*
-     * Complete the 'minimumBribes' function below.
-     *
-     * The function accepts INTEGER_ARRAY q as parameter.
-     */
-    public static void minimumBribes(List<int> q)
-    {
-        long sum = 0;
-        var bribedSet = new HashSet<int>();
-        var briberSet = new HashSet<int>();
-        for (int i = 0; i < q.Count(); ++i)
-        {
-            if (q[i] > i + 3)
-            {
-                Console.WriteLine(TOO_CHAOTIC);
-                return;
-            }
-            int diff = q[i] - i - 1;
-            // one-way bribe check
-            if (diff > 0)
-            {
-                sum += diff;
-                briberSet.Add(q[i]);
-            }
-            if (diff != 0)
-            {
-                if (!briberSet.Contains(i + 1))
-                {
-                    bribedSet.Add(i + 1);
-                }
-            }
-            // bribe and bribed check
-            if (diff <= 0)
-            {
-                diff = bribedSet.Where(b => b < q[i]).Count();
-                if (diff > 2)
-                {
-                    Console.WriteLine(TOO_CHAOTIC);
-                    return;
-                }
-                sum += diff;
-            }
-            bribedSet.Remove(q[i]);
-        }
-        Console.WriteLine(sum);
-    }
-
-}
-
 class Solution
 {
-    public static void Main(string[] args)
+
+    class SinglyLinkedListNode
     {
-        int t = Convert.ToInt32(Console.ReadLine().Trim());
+        public int data;
+        public SinglyLinkedListNode next;
 
-        for (int tItr = 0; tItr < t; tItr++)
+        public SinglyLinkedListNode(int nodeData)
         {
-            int n = Convert.ToInt32(Console.ReadLine().Trim());
+            this.data = nodeData;
+            this.next = null;
+        }
+    }
 
-            List<int> q = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(qTemp => Convert.ToInt32(qTemp)).ToList();
+    class SinglyLinkedList
+    {
+        public SinglyLinkedListNode head;
+        public SinglyLinkedListNode tail;
 
-            Result.minimumBribes(q);
+        public SinglyLinkedList()
+        {
+            this.head = null;
+            this.tail = null;
+        }
+
+        public void InsertNode(int nodeData)
+        {
+            SinglyLinkedListNode node = new SinglyLinkedListNode(nodeData);
+
+            if (this.head == null)
+            {
+                this.head = node;
+            }
+            else
+            {
+                this.tail.next = node;
+            }
+
+            this.tail = node;
+        }
+    }
+
+    static void PrintSinglyLinkedList(SinglyLinkedListNode node, string sep)
+    {
+        while (node != null)
+        {
+            Console.Write(node.data);
+
+            node = node.next;
+
+            if (node != null)
+            {
+                Console.Write(sep);
+            }
+        }
+    }
+
+    // Complete the mergeLists function below.
+
+    /*
+     * For your reference:
+     *
+     * SinglyLinkedListNode {
+     *     int data;
+     *     SinglyLinkedListNode next;
+     * }
+     *
+     */
+    static SinglyLinkedListNode mergeLists(SinglyLinkedListNode head1, SinglyLinkedListNode head2)
+    {
+        if (head1 == null)
+        {
+            return head2;
+        }
+        if (head2 == null)
+        {
+            return head1;
+        }
+        var pointerA = head1;
+        var pointerB = head2;
+        SinglyLinkedListNode newHead;
+        if (head1.data <= head2.data)
+        {
+            newHead = head1;
+            pointerA = pointerA.next;
+        }
+        else
+        {
+            newHead = head2;
+            pointerB = pointerB.next;
+        }
+        var newPointer = newHead;
+        while (pointerA != null || pointerB != null)
+        {
+            if ((pointerA?.data ?? int.MaxValue) <= (pointerB?.data ?? int.MaxValue))
+            {
+                var temp = pointerA!;
+                pointerA = pointerA!.next;
+                newPointer.next = temp;
+                newPointer = newPointer.next;
+            }
+            else
+            {
+                var temp = pointerB!;
+                pointerB = pointerB!.next;
+                newPointer.next = temp;
+                newPointer = newPointer.next;
+            }
+        }
+        return newHead;
+    }
+
+    static void Main(string[] args)
+    {
+        int tests = Convert.ToInt32(Console.ReadLine());
+
+        for (int testsItr = 0; testsItr < tests; testsItr++)
+        {
+            SinglyLinkedList llist1 = new SinglyLinkedList();
+
+            int llist1Count = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 0; i < llist1Count; i++)
+            {
+                int llist1Item = Convert.ToInt32(Console.ReadLine());
+                llist1.InsertNode(llist1Item);
+            }
+
+            SinglyLinkedList llist2 = new SinglyLinkedList();
+
+            int llist2Count = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 0; i < llist2Count; i++)
+            {
+                int llist2Item = Convert.ToInt32(Console.ReadLine());
+                llist2.InsertNode(llist2Item);
+            }
+
+            SinglyLinkedListNode llist3 = mergeLists(llist1.head, llist2.head);
+
+            PrintSinglyLinkedList(llist3, " ");
+            Console.WriteLine();
         }
     }
 }
