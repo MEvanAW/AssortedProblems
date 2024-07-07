@@ -35,6 +35,7 @@ Console app for coderbyte technical assessment or similar.
   - [Grid Challenge](#grid-challenge)
   - [Recursive Digit Sum](#recursive-digit-sum)
   - [New Year Chaos](#new-year-chaos)
+  - [Merge Two Sorted Linked Lists](#merge-two-sorted-linked-lists)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -234,3 +235,8 @@ https://www.hackerrank.com/challenges/one-week-preparation-kit-recursive-digit-s
 https://www.hackerrank.com/challenges/one-week-preparation-kit-new-year-chaos/problem
 
 `git checkout ef62694d28776f92895f3bd0769e8e25cd7bf5e4`
+
+### Merge Two Sorted Linked Lists
+https://www.hackerrank.com/challenges/one-week-preparation-kit-merge-two-sorted-linked-lists/problem
+
+`git checkout 19752d5312aa8304c6d713c45142a94c500c4d67`
