@@ -36,6 +36,7 @@ Console app for coderbyte technical assessment or similar.
   - [Recursive Digit Sum](#recursive-digit-sum)
   - [New Year Chaos](#new-year-chaos)
   - [Merge Two Sorted Linked Lists](#merge-two-sorted-linked-lists)
+  - [Queue](#queue)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -240,3 +241,8 @@ https://www.hackerrank.com/challenges/one-week-preparation-kit-new-year-chaos/pr
 https://www.hackerrank.com/challenges/one-week-preparation-kit-merge-two-sorted-linked-lists/problem
 
 `git checkout 19752d5312aa8304c6d713c45142a94c500c4d67`
+
+### Queue
+https://www.hackerrank.com/challenges/one-week-preparation-kit-queue-using-two-stacks/problem
+
+`git checkout b9e7a6dbb6d5bdf82e4cf13735497933b0cc2238`
