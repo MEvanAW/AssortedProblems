@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/find-smallest-missing-positive-integer/problem?isFullScreen=true
+﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/check-palindrome-filter-non-letters/problem?isFullScreen=true
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -17,35 +17,40 @@ class Result
 {
 
     /*
-     * Complete the 'findSmallestMissingPositive' function below.
+     * Complete the 'isAlphabeticPalindrome' function below.
      *
-     * The function is expected to return an INTEGER.
-     * The function accepts INTEGER_ARRAY orderNumbers as parameter.
+     * The function is expected to return a BOOLEAN.
+     * The function accepts STRING code as parameter.
      */
 
-    public static int findSmallestMissingPositive(List<int> orderNumbers)
+    public static bool isAlphabeticPalindrome(string code)
     {
-        List<int> positiveNumbers = new();
-        foreach (int number in orderNumbers)
+        int j = code.Length - 1;
+        for (int i = 0; i < code.Length; ++i)
         {
-            if (number > 0)
+            while (i < code.Length && !char.IsLetter(code[i]))
             {
-                positiveNumbers.Add(number);
+                ++i;
             }
-        }
-        positiveNumbers.Sort();
-        int smallestMissingPositive = 1;
-        foreach (int number in positiveNumbers)
-        {
-            if (smallestMissingPositive == number)
+            if (i >= code.Length)
             {
-                ++smallestMissingPositive;
-            }
-            else if (smallestMissingPositive < number) {
                 break;
             }
+            while (j >= 0 && !char.IsLetter(code[j]))
+            {
+                --j;
+            }
+            if (j < 0)
+            {
+                break;
+            }
+            if (char.ToLowerInvariant(code[i]) != char.ToLowerInvariant(code[j]))
+            {
+                return false;
+            }
+            --j;
         }
-        return smallestMissingPositive;
+        return true;
     }
 }
 
@@ -53,18 +58,10 @@ class Solution
 {
     public static void Main(string[] args)
     {
-        int orderNumbersCount = Convert.ToInt32(Console.ReadLine().Trim());
+        string code = Console.ReadLine();
 
-        List<int> orderNumbers = new List<int>();
+        bool result = Result.isAlphabeticPalindrome(code);
 
-        for (int i = 0; i < orderNumbersCount; i++)
-        {
-            int orderNumbersItem = Convert.ToInt32(Console.ReadLine().Trim());
-            orderNumbers.Add(orderNumbersItem);
-        }
-
-        int result = Result.findSmallestMissingPositive(orderNumbers);
-
-        Console.WriteLine(result);
+        Console.WriteLine((result ? 1 : 0));
     }
 }
