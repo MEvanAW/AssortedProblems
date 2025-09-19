@@ -41,6 +41,7 @@ Console app for coderbyte technical assessment or similar.
   - [Simple Text Editor](#simple-text-editor)
   - [Lego Blocks](#lego-blocks)
   - [Count Elements Greater Than Previous Average](#count-elements-greater-than-previous-average)
+  - [Find the Smallest Missing Positive Integer](#find-the-smallest-missing-positive-integer)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -270,3 +271,8 @@ https://www.hackerrank.com/challenges/one-week-preparation-kit-lego-blocks/probl
 https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/count-elements-greater-than-previous-average/problem?isFullScreen=true
 
 `git checkout fee4eb9ce8cc8becce6e15461c102f7aa009d811`
+
+### Find the Smallest Missing Positive Integer
+https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/find-smallest-missing-positive-integer/problem?isFullScreen=true
+
+`git checkout e2620fd7840219d996d0faef7d3f6ba047c4545e`
