@@ -40,6 +40,7 @@ Console app for coderbyte technical assessment or similar.
   - [Balanced Brackets](#balanced-brackets)
   - [Simple Text Editor](#simple-text-editor)
   - [Lego Blocks](#lego-blocks)
+  - [Count Elements Greater Than Previous Average](#count-elements-greater-than-previous-average)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -264,3 +265,8 @@ https://www.hackerrank.com/challenges/one-week-preparation-kit-simple-text-edito
 https://www.hackerrank.com/challenges/one-week-preparation-kit-lego-blocks/problem
 
 `git checkout 2bda9dcf9efb7bf3503daa1e5b82ceefde4ad249`
+
+### Count Elements Greater Than Previous Average
+https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/count-elements-greater-than-previous-average/problem?isFullScreen=true
+
+`git checkout fee4eb9ce8cc8becce6e15461c102f7aa009d811`
