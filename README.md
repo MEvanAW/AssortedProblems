@@ -42,6 +42,7 @@ Console app for coderbyte technical assessment or similar.
   - [Lego Blocks](#lego-blocks)
   - [Count Elements Greater Than Previous Average](#count-elements-greater-than-previous-average)
   - [Find the Smallest Missing Positive Integer](#find-the-smallest-missing-positive-integer)
+  - [Check Palindrome by Filtering Non-Letters](#check-palindrome-by-filtering-non-letters)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -276,3 +277,8 @@ https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/count-
 https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/find-smallest-missing-positive-integer/problem?isFullScreen=true
 
 `git checkout e2620fd7840219d996d0faef7d3f6ba047c4545e`
+
+# Check Palindrome by Filtering Non-Letters
+https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/check-palindrome-filter-non-letters/problem?isFullScreen=true
+
+`git checkout be5478deffb3d9aa930130799f26d4a2a05fb8bd`
