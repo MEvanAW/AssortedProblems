@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/count-elements-greater-than-previous-average/problem?isFullScreen=true
+﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/find-smallest-missing-positive-integer/problem?isFullScreen=true
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -15,26 +15,37 @@ using System;
 
 class Result
 {
+
     /*
-     * Complete the 'countResponseTimeRegressions' function below.
+     * Complete the 'findSmallestMissingPositive' function below.
      *
      * The function is expected to return an INTEGER.
-     * The function accepts INTEGER_ARRAY responseTimes as parameter.
+     * The function accepts INTEGER_ARRAY orderNumbers as parameter.
      */
-    public static int countResponseTimeRegressions(List<int> responseTimes)
+
+    public static int findSmallestMissingPositive(List<int> orderNumbers)
     {
-        if (responseTimes.Count == 0) return 0;
-        long sum = responseTimes[0];
-        int count = 0;
-        for (int i = 1; i < responseTimes.Count; ++i)
+        List<int> positiveNumbers = new();
+        foreach (int number in orderNumbers)
         {
-            if ((long) responseTimes[i] * i > sum)
+            if (number > 0)
             {
-                ++count;
+                positiveNumbers.Add(number);
             }
-            sum += responseTimes[i];
         }
-        return count;
+        positiveNumbers.Sort();
+        int smallestMissingPositive = 1;
+        foreach (int number in positiveNumbers)
+        {
+            if (smallestMissingPositive == number)
+            {
+                ++smallestMissingPositive;
+            }
+            else if (smallestMissingPositive < number) {
+                break;
+            }
+        }
+        return smallestMissingPositive;
     }
 }
 
@@ -42,17 +53,17 @@ class Solution
 {
     public static void Main(string[] args)
     {
-        int responseTimesCount = Convert.ToInt32(Console.ReadLine().Trim());
+        int orderNumbersCount = Convert.ToInt32(Console.ReadLine().Trim());
 
-        List<int> responseTimes = new List<int>();
+        List<int> orderNumbers = new List<int>();
 
-        for (int i = 0; i < responseTimesCount; i++)
+        for (int i = 0; i < orderNumbersCount; i++)
         {
-            int responseTimesItem = Convert.ToInt32(Console.ReadLine().Trim());
-            responseTimes.Add(responseTimesItem);
+            int orderNumbersItem = Convert.ToInt32(Console.ReadLine().Trim());
+            orderNumbers.Add(orderNumbersItem);
         }
 
-        int result = Result.countResponseTimeRegressions(responseTimes);
+        int result = Result.findSmallestMissingPositive(orderNumbers);
 
         Console.WriteLine(result);
     }
