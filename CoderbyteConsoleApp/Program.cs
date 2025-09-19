@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/challenges/one-week-preparation-kit-lego-blocks/problem
+﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/count-elements-greater-than-previous-average/problem?isFullScreen=true
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -15,107 +15,26 @@ using System;
 
 class Result
 {
-    const int M = 1000000007;
-    // Example cases:
-    // m = 1: {1}
-    // m = 2: {1,1}, {2}
-    // m = 3: {1,1,1}, {1,2}, {2,1}, {3}
-    // m = 4: {1,1,1,1}, {1,1,2}, {1,2,1}, {2,1,1}, {1,3}, {3,1}, {2,2}, {4}
-    // m = 5: {1,1,1,1,1}, {1,1,1,2}, {1,1,2,1}, {1,2,1,1}, {2,1,1,1}, {1,2,2}, {2,1,2}, {2,2,1}, {1,1,3}, {1,3,1}, {3,1,1}, {2,3}, {3,2}, {1,4}, {4,1}
-    static private List<decimal> horizontalPermutations = new List<decimal> { 1, 2, 4, 8, 15, 29, 56, 108, 208, 401, 773, 1490, 2872, 5536, 10671, 20569, 39648, 76424, 147312 };
-    static private Dictionary<int, List<decimal>> nToWallPermutationsDict = new();
-    static private Dictionary<int, List<decimal>> nToGoodPermutationsDict = new();
-
     /*
-     * Complete the 'legoBlocks' function below.
+     * Complete the 'countResponseTimeRegressions' function below.
      *
      * The function is expected to return an INTEGER.
-     * The function accepts following parameters:
-     *  1. INTEGER n
-     *  2. INTEGER m
+     * The function accepts INTEGER_ARRAY responseTimes as parameter.
      */
-    public static int legoBlocks(int n, int m)
+    public static int countResponseTimeRegressions(List<int> responseTimes)
     {
-        if (m > horizontalPermutations.Count)
+        if (responseTimes.Count == 0) return 0;
+        long sum = responseTimes[0];
+        int count = 0;
+        for (int i = 1; i < responseTimes.Count; ++i)
         {
-            // Calculate number of permutations for a line.
-            // Each iteration, include 1 width block after all the i-1 width ways plus 2-width block after all the i-2 width ways, etc. up to the 4 width block
-            decimal aggregate = horizontalPermutations[horizontalPermutations.Count - 1];
-            for (int i = horizontalPermutations.Count; i < m; ++i)
+            if ((long) responseTimes[i] * i > sum)
             {
-                if (i > 101)
-                {
-                    aggregate = (aggregate % M + Mod(horizontalPermutations[i - 1] % M - horizontalPermutations[i - 5] % M)) % M;
-                }
-                else
-                {
-                    aggregate += (horizontalPermutations[i - 1] - horizontalPermutations[i - 5]);
-                }
-                horizontalPermutations.Add(aggregate);
+                ++count;
             }
+            sum += responseTimes[i];
         }
-        var wallPermutations = new List<decimal>();
-        int mIndex = 0;
-        bool nExist = nToWallPermutationsDict.ContainsKey(n);
-        if (nExist)
-        {
-            wallPermutations = nToWallPermutationsDict[n];
-            mIndex = wallPermutations.Count;
-        }
-        for (; mIndex < m; ++mIndex)
-        {
-            wallPermutations.Add(ModulatedPower(horizontalPermutations[mIndex], n));
-        }
-        if (!nExist) {
-            nToWallPermutationsDict[n] = wallPermutations;
-        }
-        // There is only 1 way to make a width-1 good wall
-        var goodPermutations = new List<decimal> { 1 };
-        mIndex = 1;
-        nExist = nToGoodPermutationsDict.ContainsKey(n);
-        if (nExist)
-        {
-            goodPermutations = nToGoodPermutationsDict[n];
-            mIndex = goodPermutations.Count;
-        }
-        // Any good wall permutation of width < m is essentially one of the invalid left portions of a bad wall, so we subtract those out, multiplied by the permutations
-        for (;  mIndex < m; ++mIndex)
-        {
-            decimal goodPermutation = wallPermutations[mIndex];
-            for (int j = 0; j < mIndex; ++j)
-            {
-                goodPermutation = Mod(goodPermutation % M - ((goodPermutations[j] % M) * (wallPermutations[mIndex - j - 1] % M) % M) % M);
-            }
-            goodPermutations.Add(goodPermutation);
-        }
-        if (!nExist)
-        {
-            nToGoodPermutationsDict[n] = goodPermutations;
-        }
-        return (int) goodPermutations[m - 1];
-    }
-
-    private static decimal ModulatedPower(decimal x, int exp)
-    {
-        decimal result = 1;
-        while (exp > 0)
-        {
-            if ((exp & 1) == 1)
-            {
-                result %= M;
-                result = (result * x);
-            }
-            exp >>= 1;
-            x %= M;
-            x = (x * x);
-        }
-        return result;
-    }
-
-    private static decimal Mod(decimal x)
-    {
-        decimal mod = x % M;
-        return mod >= 0 ? mod : mod + M;
+        return count;
     }
 }
 
@@ -123,19 +42,18 @@ class Solution
 {
     public static void Main(string[] args)
     {
-        int t = Convert.ToInt32(Console.ReadLine().Trim());
+        int responseTimesCount = Convert.ToInt32(Console.ReadLine().Trim());
 
-        for (int tItr = 0; tItr < t; tItr++)
+        List<int> responseTimes = new List<int>();
+
+        for (int i = 0; i < responseTimesCount; i++)
         {
-            string[] firstMultipleInput = Console.ReadLine().TrimEnd().Split(' ');
-
-            int n = Convert.ToInt32(firstMultipleInput[0]);
-
-            int m = Convert.ToInt32(firstMultipleInput[1]);
-
-            int result = Result.legoBlocks(n, m);
-
-            Console.WriteLine(result);
+            int responseTimesItem = Convert.ToInt32(Console.ReadLine().Trim());
+            responseTimes.Add(responseTimesItem);
         }
+
+        int result = Result.countResponseTimeRegressions(responseTimes);
+
+        Console.WriteLine(result);
     }
 }
