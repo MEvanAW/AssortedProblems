@@ -39,6 +39,7 @@ Console app for coderbyte technical assessment or similar.
   - [Queue](#queue)
   - [Balanced Brackets](#balanced-brackets)
   - [Simple Text Editor](#simple-text-editor)
+  - [Lego Blocks](#lego-blocks)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -258,3 +259,8 @@ https://www.hackerrank.com/challenges/one-week-preparation-kit-balanced-brackets
 https://www.hackerrank.com/challenges/one-week-preparation-kit-simple-text-editor/problem
 
 `git checkout f05229d72fb64dcb16820b34c77615817bb8028b`
+
+### Lego Blocks
+https://www.hackerrank.com/challenges/one-week-preparation-kit-lego-blocks/problem
+
+`git checkout 2bda9dcf9efb7bf3503daa1e5b82ceefde4ad249`
