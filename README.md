@@ -44,6 +44,7 @@ Console app for coderbyte technical assessment or similar.
   - [Find the Smallest Missing Positive Integer](#find-the-smallest-missing-positive-integer)
   - [Check Palindrome by Filtering Non-Letters](#check-palindrome-by-filtering-non-letters)
   - [Merge and Sort Intervals](#merge-and-sort-intervals)
+  - [Check for Non-Identical String Rotation](#check-for-non-identical-string-rotation)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -288,3 +289,8 @@ https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/check-
 https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/merge-and-sort-intervals/problem?isFullScreen=true
 
 `git checkout de5bd50b87544827bc0bafa04f349e85d4fbadad`
+
+### Check for Non-Identical String Rotation
+https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/check-non-identical-string-rotation/problem?isFullScreen=true
+
+`git checkout d2f7a154d97092e2d1ad6c36c1bbd997ecf0f6c7`
