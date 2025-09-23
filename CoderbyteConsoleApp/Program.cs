@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/merge-and-sort-intervals/problem?isFullScreen=true
+﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/check-non-identical-string-rotation/problem?isFullScreen=true
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -17,66 +17,34 @@ class Result
 {
 
     /*
-     * Complete the 'mergeHighDefinitionIntervals' function below.
+     * Complete the 'isNonTrivialRotation' function below.
      *
-     * The function is expected to return a 2D_INTEGER_ARRAY.
-     * The function accepts 2D_INTEGER_ARRAY intervals as parameter.
+     * The function is expected to return a BOOLEAN.
+     * The function accepts following parameters:
+     *  1. STRING s1
+     *  2. STRING s2
      */
 
-    public static List<List<int>> mergeHighDefinitionIntervals(List<List<int>> intervals)
+    public static bool isNonTrivialRotation(string s1, string s2)
     {
-        if (intervals.Count == 0) return intervals;
-        intervals.Sort(delegate (List<int> x, List<int> y)
+        if (s1 == s2)
         {
-            return x[0] - y[0];
-        });
-        var coveredIndex = new HashSet<int>();
-        var mergedIntervals = new List<List<int>>();
-        for (int i = 0; i < intervals.Count; ++i)
-        {
-            if (coveredIndex.Contains(i))
-            {
-                continue;
-            }
-            var interval = new List<int> { intervals[i][0], intervals[i][1] };
-            for (int j = i + 1; j < intervals.Count; ++j)
-            {
-                if (intervals[j][0] <= interval[1])
-                {
-                    coveredIndex.Add(j);
-                    if (intervals[j][1] > interval[1])
-                    {
-                        interval[1] = intervals[j][1];
-                    }
-                }
-                else
-                {
-                    break;
-                }
-            }
-            mergedIntervals.Add(interval);
+            return false;
         }
-        return mergedIntervals;
+        return (s1 + s1).Contains(s2);
     }
-
 }
 
 class Solution
 {
     public static void Main(string[] args)
     {
-        int intervalsRows = Convert.ToInt32(Console.ReadLine().Trim());
-        int intervalsColumns = Convert.ToInt32(Console.ReadLine().Trim());
+        string s1 = Console.ReadLine();
 
-        List<List<int>> intervals = new List<List<int>>();
+        string s2 = Console.ReadLine();
 
-        for (int i = 0; i < intervalsRows; i++)
-        {
-            intervals.Add(Console.ReadLine().TrimEnd().Split(' ').ToList().Select(intervalsTemp => Convert.ToInt32(intervalsTemp)).ToList());
-        }
+        bool result = Result.isNonTrivialRotation(s1, s2);
 
-        List<List<int>> result = Result.mergeHighDefinitionIntervals(intervals);
-
-        Console.WriteLine(String.Join("\n", result.Select(x => String.Join(" ", x))));
+        Console.WriteLine((result ? 1 : 0));
     }
 }
