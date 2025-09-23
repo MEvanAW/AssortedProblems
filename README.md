@@ -45,6 +45,7 @@ Console app for coderbyte technical assessment or similar.
   - [Check Palindrome by Filtering Non-Letters](#check-palindrome-by-filtering-non-letters)
   - [Merge and Sort Intervals](#merge-and-sort-intervals)
   - [Check for Non-Identical String Rotation](#check-for-non-identical-string-rotation)
+  - [Lookup with Binary Search](#lookup-with-binary-search)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -294,3 +295,8 @@ https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/merge-
 https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/check-non-identical-string-rotation/problem?isFullScreen=true
 
 `git checkout d2f7a154d97092e2d1ad6c36c1bbd997ecf0f6c7`
+
+### Lookup with Binary Search
+https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/lookup-with-binary-search/problem?isFullScreen=true
+
+`git checkout 8e6aed1896f137ca0e71171f498edacb91892a0c`
