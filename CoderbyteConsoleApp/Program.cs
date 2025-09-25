@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/validate-properly-nested-brackets/problem?isFullScreen=true
+﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/min-tracking-stack/problem?isFullScreen=true
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -15,80 +15,59 @@ using System;
 
 class Result
 {
+    static readonly string PUSH = "pu";
+    static readonly string POP = "po";
+    static readonly string TOP = "to";
+    static readonly char GET_MIN = 'g';
+    static readonly char SEPARATOR = ' ';
+
     /*
-     * Complete the 'areBracketsProperlyMatched' function below.
+     * Complete the 'processCouponStackOperations' function below.
      *
-     * The function is expected to return a BOOLEAN.
-     * The function accepts STRING code_snippet as parameter.
+     * The function is expected to return an INTEGER_ARRAY.
+     * The function accepts STRING_ARRAY operations as parameter.
      */
 
-    static readonly char BRACKET_OPEN = '(';
-    static readonly char BRACKET_CLOSE = ')';
-    static readonly char SQUARE_OPEN = '[';
-    static readonly char SQUARE_CLOSE = ']';
-    static readonly char BRACE_OPEN = '{';
-    static readonly char BRACE_CLOSE = '}';
-
-    public static bool areBracketsProperlyMatched(string str)
+    public static List<int> processCouponStackOperations(List<string> operations)
     {
-        int bracketCount = 0;
-        int squareCount = 0;
-        int braceCount = 0;
-        var openerStack = new Stack();
-        foreach (char c in str)
+        var result = new List<int>();
+        var stack = new Stack<int>();
+        var minStack = new Stack<int[]>();
+        var currentMin = new int[] { int.MaxValue, 0 };
+        foreach (var operation in operations)
         {
-            if (c == BRACKET_OPEN)
+            if (operation.StartsWith(PUSH))
             {
-                ++bracketCount;
-                openerStack.Push(c);
-            }
-            else if (c == SQUARE_OPEN)
-            {
-                ++squareCount;
-                openerStack.Push(c);
-            }
-            else if (c == BRACE_OPEN)
-            {
-                ++braceCount;
-                openerStack.Push(c);
-            }
-            try
-            {
-                if (c == BRACKET_CLOSE)
+                int operand = Convert.ToInt32(operation.Split(SEPARATOR)[1]);
+                if (operand < currentMin[0])
                 {
-                    if (openerStack.Pop() as char? != BRACKET_OPEN)
-                    {
-                        return false;
-                    }
-                    --bracketCount;
+                    currentMin = new int[] { operand, 1 };
+                    minStack.Push(currentMin);
                 }
-                else if (c == SQUARE_CLOSE)
+                else if (operand == currentMin[0])
                 {
-                    if (openerStack.Pop() as char? != SQUARE_OPEN)
-                    {
-                        return false;
-                    }
-                    --squareCount;
+                    ++currentMin[1];
                 }
-                else if (c == BRACE_CLOSE)
+                stack.Push(operand);
+            }
+            else if (operation.StartsWith(POP))
+            {
+                if (stack.Pop() == currentMin[0] && --currentMin[1] == 0)
                 {
-                    if (openerStack.Pop() as char? != BRACE_OPEN)
-                    {
-                        return false;
-                    }
-                    --braceCount;
+                    minStack.Pop();
+                    currentMin = minStack.Peek();
                 }
             }
-            catch (InvalidOperationException)
+            else if (operation.StartsWith(TOP))
             {
-                return false;
+                result.Add(stack.Peek());
             }
-            if (bracketCount < 0 || squareCount < 0 || braceCount < 0)
+            else if (operation.StartsWith(GET_MIN))
             {
-                return false;
+                result.Add(currentMin[0]);
             }
         }
-        return bracketCount == 0 && squareCount == 0 && braceCount == 0;
+        return result;
     }
 
 }
@@ -97,10 +76,18 @@ class Solution
 {
     public static void Main(string[] args)
     {
-        string code_snippet = Console.ReadLine();
+        int operationsCount = Convert.ToInt32(Console.ReadLine().Trim());
 
-        bool result = Result.areBracketsProperlyMatched(code_snippet);
+        List<string> operations = new List<string>();
 
-        Console.WriteLine((result ? 1 : 0));
+        for (int i = 0; i < operationsCount; i++)
+        {
+            string operationsItem = Console.ReadLine();
+            operations.Add(operationsItem);
+        }
+
+        List<int> result = Result.processCouponStackOperations(operations);
+
+        Console.WriteLine(String.Join("\n", result));
     }
 }
