@@ -47,6 +47,7 @@ Console app for coderbyte technical assessment or similar.
   - [Check for Non-Identical String Rotation](#check-for-non-identical-string-rotation)
   - [Lookup with Binary Search](#lookup-with-binary-search)
   - [First Occurrence in Event Code Log](#first-occurrence-in-event-code-log)
+  - [Maximum Number of Non-Overlapping Intervals](#maximum-number-of-non-overlapping-intervals)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -306,3 +307,8 @@ https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/lookup
 https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/first-occurrence-in-event-code-log/problem?isFullScreen=true
 
 `git checkout ab7ace0632da176b8f86ce4ca164a309a639293a`
+
+### Maximum Number of Non-Overlapping Intervals
+https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/maximum-non-overlapping-intervals/problem?isFullScreen=true
+
+`git checkout eaf84626dc02e8c92fcf182e7b5122ca9a1efdf5`
