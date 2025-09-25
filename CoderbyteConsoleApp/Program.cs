@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/maximum-non-overlapping-intervals/problem?isFullScreen=true
+﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/validate-properly-nested-brackets/problem?isFullScreen=true
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -15,51 +15,92 @@ using System;
 
 class Result
 {
-
     /*
-     * Complete the 'maximizeNonOverlappingMeetings' function below.
+     * Complete the 'areBracketsProperlyMatched' function below.
      *
-     * The function is expected to return an INTEGER.
-     * The function accepts 2D_INTEGER_ARRAY meetings as parameter.
+     * The function is expected to return a BOOLEAN.
+     * The function accepts STRING code_snippet as parameter.
      */
 
-    public static int maximizeNonOverlappingMeetings(List<List<int>> intervals)
-    { 
-        if (intervals.Count == 0) return 0;
-        intervals.Sort(delegate (List<int> x, List<int> y)
+    static readonly char BRACKET_OPEN = '(';
+    static readonly char BRACKET_CLOSE = ')';
+    static readonly char SQUARE_OPEN = '[';
+    static readonly char SQUARE_CLOSE = ']';
+    static readonly char BRACE_OPEN = '{';
+    static readonly char BRACE_CLOSE = '}';
+
+    public static bool areBracketsProperlyMatched(string str)
+    {
+        int bracketCount = 0;
+        int squareCount = 0;
+        int braceCount = 0;
+        var openerStack = new Stack();
+        foreach (char c in str)
         {
-            return x[0] - y[0];
-        });
-        int count = 1;
-        int lastStart = intervals[intervals.Count - 1][0];
-        for (int i = intervals.Count - 2; i >= 0; --i)
-        {
-            if (lastStart >= intervals[i][1])
+            if (c == BRACKET_OPEN)
             {
-                lastStart = intervals[i][0];
-                ++count;
+                ++bracketCount;
+                openerStack.Push(c);
+            }
+            else if (c == SQUARE_OPEN)
+            {
+                ++squareCount;
+                openerStack.Push(c);
+            }
+            else if (c == BRACE_OPEN)
+            {
+                ++braceCount;
+                openerStack.Push(c);
+            }
+            try
+            {
+                if (c == BRACKET_CLOSE)
+                {
+                    if (openerStack.Pop() as char? != BRACKET_OPEN)
+                    {
+                        return false;
+                    }
+                    --bracketCount;
+                }
+                else if (c == SQUARE_CLOSE)
+                {
+                    if (openerStack.Pop() as char? != SQUARE_OPEN)
+                    {
+                        return false;
+                    }
+                    --squareCount;
+                }
+                else if (c == BRACE_CLOSE)
+                {
+                    if (openerStack.Pop() as char? != BRACE_OPEN)
+                    {
+                        return false;
+                    }
+                    --braceCount;
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                return false;
+            }
+            if (bracketCount < 0 || squareCount < 0 || braceCount < 0)
+            {
+                return false;
             }
         }
-        return count;
+        return bracketCount == 0 && squareCount == 0 && braceCount == 0;
     }
+
 }
 
 class Solution
 {
     public static void Main(string[] args)
     {
-        int meetingsRows = Convert.ToInt32(Console.ReadLine().Trim());
-        int meetingsColumns = Convert.ToInt32(Console.ReadLine().Trim());
+        string code_snippet = Console.ReadLine();
 
-        List<List<int>> meetings = new List<List<int>>();
+        bool result = Result.areBracketsProperlyMatched(code_snippet);
 
-        for (int i = 0; i < meetingsRows; i++)
-        {
-            meetings.Add(Console.ReadLine().TrimEnd().Split(' ').ToList().Select(meetingsTemp => Convert.ToInt32(meetingsTemp)).ToList());
-        }
-
-        int result = Result.maximizeNonOverlappingMeetings(meetings);
-
-        Console.WriteLine(result);
+        Console.WriteLine((result ? 1 : 0));
     }
 }
