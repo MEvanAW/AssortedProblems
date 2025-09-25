@@ -46,6 +46,7 @@ Console app for coderbyte technical assessment or similar.
   - [Merge and Sort Intervals](#merge-and-sort-intervals)
   - [Check for Non-Identical String Rotation](#check-for-non-identical-string-rotation)
   - [Lookup with Binary Search](#lookup-with-binary-search)
+  - [First Occurrence in Event Code Log](#first-occurrence-in-event-code-log)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -300,3 +301,8 @@ https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/check-
 https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/lookup-with-binary-search/problem?isFullScreen=true
 
 `git checkout 8e6aed1896f137ca0e71171f498edacb91892a0c`
+
+### First Occurrence in Event Code Log
+https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/first-occurrence-in-event-code-log/problem?isFullScreen=true
+
+`git checkout ab7ace0632da176b8f86ce4ca164a309a639293a`
