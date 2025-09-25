@@ -49,6 +49,7 @@ Console app for coderbyte technical assessment or similar.
   - [First Occurrence in Event Code Log](#first-occurrence-in-event-code-log)
   - [Maximum Number of Non-Overlapping Intervals](#maximum-number-of-non-overlapping-intervals)
   - [Validate Properly Nested Brackets](#validate-properly-nested-brackets)
+  - [Min-Tracking Stack Implementation](#min-tracking-stack-implementation)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -315,6 +316,11 @@ https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/maximu
 `git checkout eaf84626dc02e8c92fcf182e7b5122ca9a1efdf5`
 
 ### Validate Properly Nested Brackets
-https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/validate-properly-nested-brackets/submissions?isFullScreen=true
+https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/validate-properly-nested-brackets/problem?isFullScreen=true
 
 `git checkout ca871c53504a6eba120b7056d1ca26a04117ae61`
+
+### Min-Tracking Stack Implementation
+https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/min-tracking-stack/problem?isFullScreen=true
+
+`git checkout 93c81612339f4f773251f2d0e0b8971d83b2213f`
