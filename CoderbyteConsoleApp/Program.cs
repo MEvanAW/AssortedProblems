@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/first-occurrence-in-event-code-log/problem?isFullScreen=true
+﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/maximum-non-overlapping-intervals/problem?isFullScreen=true
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -17,67 +17,30 @@ class Result
 {
 
     /*
-     * Complete the 'findFirstOccurrence' function below.
+     * Complete the 'maximizeNonOverlappingMeetings' function below.
      *
      * The function is expected to return an INTEGER.
-     * The function accepts following parameters:
-     *  1. INTEGER_ARRAY nums
-     *  2. INTEGER target
+     * The function accepts 2D_INTEGER_ARRAY meetings as parameter.
      */
 
-    public static int findFirstOccurrence(List<int> nums, int target)
-    {
-        if (nums.Count == 0) return -1;
-        if (nums.Count == 1) return nums[0] == target ? 0 : -1;
-        var lowerBound = 0;
-        var upperBound = nums.Count - 1;
-        var checkingIndex = upperBound / 2;
-        while (lowerBound < upperBound)
+    public static int maximizeNonOverlappingMeetings(List<List<int>> intervals)
+    { 
+        if (intervals.Count == 0) return 0;
+        intervals.Sort(delegate (List<int> x, List<int> y)
         {
-            int range;
-            if (nums[checkingIndex] >= target)
+            return x[0] - y[0];
+        });
+        int count = 1;
+        int lastStart = intervals[intervals.Count - 1][0];
+        for (int i = intervals.Count - 2; i >= 0; --i)
+        {
+            if (lastStart >= intervals[i][1])
             {
-                upperBound = checkingIndex;
-                range = upperBound - lowerBound;
-                if (range == 1)
-                {
-                    if (checkingIndex > 0 && nums[checkingIndex - 1] == target)
-                    {
-                        return --checkingIndex;
-                    }
-                    else if (nums[checkingIndex] == target)
-                    {
-                        return checkingIndex;
-                    }
-                    else
-                    {
-                        return -1;
-                    }
-                }
+                lastStart = intervals[i][0];
+                ++count;
             }
-            else
-            {
-                lowerBound = checkingIndex;
-                range = upperBound - lowerBound;
-                if (range == 1)
-                {
-                    if (nums[checkingIndex] == target)
-                    {
-                        return checkingIndex;
-                    }
-                    else if (checkingIndex < nums.Count - 1 && nums[++checkingIndex] == target)
-                    {
-                        return checkingIndex;
-                    }
-                    else
-                    {
-                        return -1;
-                    }
-                }
-            }
-            checkingIndex = (upperBound + lowerBound) / 2;
         }
-        return checkingIndex;
+        return count;
     }
 }
 
@@ -85,19 +48,17 @@ class Solution
 {
     public static void Main(string[] args)
     {
-        int numsCount = Convert.ToInt32(Console.ReadLine().Trim());
+        int meetingsRows = Convert.ToInt32(Console.ReadLine().Trim());
+        int meetingsColumns = Convert.ToInt32(Console.ReadLine().Trim());
 
-        List<int> nums = new List<int>();
+        List<List<int>> meetings = new List<List<int>>();
 
-        for (int i = 0; i < numsCount; i++)
+        for (int i = 0; i < meetingsRows; i++)
         {
-            int numsItem = Convert.ToInt32(Console.ReadLine().Trim());
-            nums.Add(numsItem);
+            meetings.Add(Console.ReadLine().TrimEnd().Split(' ').ToList().Select(meetingsTemp => Convert.ToInt32(meetingsTemp)).ToList());
         }
 
-        int target = Convert.ToInt32(Console.ReadLine().Trim());
-
-        int result = Result.findFirstOccurrence(nums, target);
+        int result = Result.maximizeNonOverlappingMeetings(meetings);
 
         Console.WriteLine(result);
     }
