@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/lookup-with-binary-search/problem?isFullScreen=true
+﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/first-occurrence-in-event-code-log/problem?isFullScreen=true
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -17,7 +17,7 @@ class Result
 {
 
     /*
-     * Complete the 'binarySearch' function below.
+     * Complete the 'findFirstOccurrence' function below.
      *
      * The function is expected to return an INTEGER.
      * The function accepts following parameters:
@@ -25,8 +25,9 @@ class Result
      *  2. INTEGER target
      */
 
-    public static int binarySearch(List<int> nums, int target)
+    public static int findFirstOccurrence(List<int> nums, int target)
     {
+        if (nums.Count == 0) return -1;
         if (nums.Count == 1) return nums[0] == target ? 0 : -1;
         var lowerBound = 0;
         var upperBound = nums.Count - 1;
@@ -34,17 +35,24 @@ class Result
         while (lowerBound < upperBound)
         {
             int range;
-            if (nums[checkingIndex] == target)
-            {
-                return checkingIndex;
-            }
-            if (nums[checkingIndex] > target)
+            if (nums[checkingIndex] >= target)
             {
                 upperBound = checkingIndex;
                 range = upperBound - lowerBound;
                 if (range == 1)
                 {
-                    --checkingIndex;
+                    if (checkingIndex > 0 && nums[checkingIndex - 1] == target)
+                    {
+                        return --checkingIndex;
+                    }
+                    else if (nums[checkingIndex] == target)
+                    {
+                        return checkingIndex;
+                    }
+                    else
+                    {
+                        return -1;
+                    }
                 }
             }
             else
@@ -53,15 +61,23 @@ class Result
                 range = upperBound - lowerBound;
                 if (range == 1)
                 {
-                    ++checkingIndex;
+                    if (nums[checkingIndex] == target)
+                    {
+                        return checkingIndex;
+                    }
+                    else if (checkingIndex < nums.Count - 1 && nums[++checkingIndex] == target)
+                    {
+                        return checkingIndex;
+                    }
+                    else
+                    {
+                        return -1;
+                    }
                 }
             }
-            if (range > 1)
-            {
-                checkingIndex = (upperBound + lowerBound) / 2;
-            }
+            checkingIndex = (upperBound + lowerBound) / 2;
         }
-        return -1;
+        return checkingIndex;
     }
 }
 
@@ -81,7 +97,7 @@ class Solution
 
         int target = Convert.ToInt32(Console.ReadLine().Trim());
 
-        int result = Result.binarySearch(nums, target);
+        int result = Result.findFirstOccurrence(nums, target);
 
         Console.WriteLine(result);
     }
