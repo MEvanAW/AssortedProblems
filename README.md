@@ -50,6 +50,7 @@ Console app for coderbyte technical assessment or similar.
   - [Maximum Number of Non-Overlapping Intervals](#maximum-number-of-non-overlapping-intervals)
   - [Validate Properly Nested Brackets](#validate-properly-nested-brackets)
   - [Min-Tracking Stack Implementation](#min-tracking-stack-implementation)
+  - [One-Pass Removal of k-th Node from End](#one-pass-removal-of-k-th-node-from-end)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -324,3 +325,8 @@ https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/valida
 https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/min-tracking-stack/problem?isFullScreen=true
 
 `git checkout 93c81612339f4f773251f2d0e0b8971d83b2213f`
+
+### One-Pass Removal of k-th Node from End
+https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/one-pass-removal-kth-from-end/problem?isFullScreen=true
+
+`git checkout ec47fd1565eabac9bc728605b4697732230af450`
