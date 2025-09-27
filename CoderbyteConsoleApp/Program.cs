@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/one-pass-removal-kth-from-end/problem?isFullScreen=true
+﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/count-number-pairs/problem?isFullScreen=true
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -13,112 +13,58 @@ using System.Text.RegularExpressions;
 using System.Text;
 using System;
 
-class SinglyLinkedListNode
-{
-    public int data;
-    public SinglyLinkedListNode next;
-
-    public SinglyLinkedListNode(int nodeData)
-    {
-        this.data = nodeData;
-        this.next = null;
-    }
-}
-
-class SinglyLinkedList
-{
-    public SinglyLinkedListNode head;
-    public SinglyLinkedListNode tail;
-
-    public SinglyLinkedList()
-    {
-        this.head = null;
-        this.tail = null;
-    }
-
-    public void InsertNode(int nodeData)
-    {
-        SinglyLinkedListNode node = new SinglyLinkedListNode(nodeData);
-
-        if (this.head == null)
-        {
-            this.head = node;
-        }
-        else
-        {
-            this.tail.next = node;
-        }
-
-        this.tail = node;
-    }
-}
-
-class SinglyLinkedListPrintHelepr
-{
-    public static void PrintList(SinglyLinkedListNode node, string sep)
-    {
-        while (node != null)
-        {
-            Console.Write(node.data);
-
-            node = node.next;
-
-            if (node != null)
-            {
-                Console.Write(sep);
-            }
-        }
-    }
-}
-
 class Result
 {
 
     /*
-     * Complete the 'removeKthNodeFromEnd' function below.
+     * Complete the 'countAffordablePairs' function below.
      *
-     * The function is expected to return an INTEGER_SINGLY_LINKED_LIST.
+     * The function is expected to return an INTEGER.
      * The function accepts following parameters:
-     *  1. INTEGER_SINGLY_LINKED_LIST head
-     *  2. INTEGER k
+     *  1. INTEGER_ARRAY prices
+     *  2. INTEGER budget
      */
 
-    /*
-     * For your reference:
-     *
-     * SinglyLinkedListNode
-     * {
-     *     int data;
-     *     SinglyLinkedListNode next;
-     * }
-     *
-     */
-
-    public static SinglyLinkedListNode removeKthNodeFromEnd(SinglyLinkedListNode head, int k)
+    public static int countAffordablePairs(List<int> prices, int budget)
     {
-        var list = new List<SinglyLinkedListNode>();
-        SinglyLinkedListNode node = head;
-        while (node != null)
+        if (prices.Count < 2)
         {
-            list.Add(node);
-            node = node.next;
+            return 0;
         }
-        var index = list.Count - k - 1;
-        if (index < 0)
+        int count = 0;
+        int halfBudgetCount = 0;
+        for (int i = 0; i < prices.Count; ++i)
         {
-            return head;
+            if (prices[i] + prices[i] > budget)
+            {
+                break;
+            }
+            ++halfBudgetCount;
         }
-        if (index == 0)
+        if (halfBudgetCount > 1)
         {
-            return list.Count > 1 ? list[1] : null;
+            count = halfBudgetCount * (halfBudgetCount - 1) / 2;
         }
-        if (index == list.Count - 1)
+        for (int i = 0; i < prices.Count; ++i)
         {
-            list[^2].next = null;
-            return head;
+            int limit = budget - prices[i];
+            if (limit < prices[i])
+            {
+                break;
+            }
+            for (int j = Math.Max(halfBudgetCount, i + 1);  j < prices.Count; ++j)
+            {
+                if (prices[j] <= limit)
+                {
+                    ++count;
+                }
+                else
+                {
+                    break;
+                }
+            }
         }
-        list[index - 1].next = list[index + 1];
-        return head;
+        return count;
     }
 }
 
@@ -126,22 +72,20 @@ class Solution
 {
     public static void Main(string[] args)
     {
-        SinglyLinkedList head = new SinglyLinkedList();
+        int pricesCount = Convert.ToInt32(Console.ReadLine().Trim());
 
-        int headCount = Convert.ToInt32(Console.ReadLine().Trim());
+        List<int> prices = new List<int>();
 
-        for (int i = 0; i < headCount; i++)
+        for (int i = 0; i < pricesCount; i++)
         {
-            int headItem = Convert.ToInt32(Console.ReadLine().Trim());
-            head.InsertNode(headItem);
+            int pricesItem = Convert.ToInt32(Console.ReadLine().Trim());
+            prices.Add(pricesItem);
         }
 
-        int k = Convert.ToInt32(Console.ReadLine().Trim());
+        int budget = Convert.ToInt32(Console.ReadLine().Trim());
 
-        SinglyLinkedListNode result = Result.removeKthNodeFromEnd(head.head, k);
+        int result = Result.countAffordablePairs(prices, budget);
 
-        SinglyLinkedListPrintHelepr.PrintList(result, "\n");
-        Console.WriteLine();
+        Console.WriteLine(result);
     }
 }
-
