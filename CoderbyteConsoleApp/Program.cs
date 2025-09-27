@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/min-tracking-stack/problem?isFullScreen=true
+﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/one-pass-removal-kth-from-end/problem?isFullScreen=true
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -13,81 +13,135 @@ using System.Text.RegularExpressions;
 using System.Text;
 using System;
 
-class Result
+class SinglyLinkedListNode
 {
-    static readonly string PUSH = "pu";
-    static readonly string POP = "po";
-    static readonly string TOP = "to";
-    static readonly char GET_MIN = 'g';
-    static readonly char SEPARATOR = ' ';
+    public int data;
+    public SinglyLinkedListNode next;
 
-    /*
-     * Complete the 'processCouponStackOperations' function below.
-     *
-     * The function is expected to return an INTEGER_ARRAY.
-     * The function accepts STRING_ARRAY operations as parameter.
-     */
-
-    public static List<int> processCouponStackOperations(List<string> operations)
+    public SinglyLinkedListNode(int nodeData)
     {
-        var result = new List<int>();
-        var stack = new Stack<int>();
-        var minStack = new Stack<int[]>();
-        var currentMin = new int[] { int.MaxValue, 0 };
-        foreach (var operation in operations)
-        {
-            if (operation.StartsWith(PUSH))
-            {
-                int operand = Convert.ToInt32(operation.Split(SEPARATOR)[1]);
-                if (operand < currentMin[0])
-                {
-                    currentMin = new int[] { operand, 1 };
-                    minStack.Push(currentMin);
-                }
-                else if (operand == currentMin[0])
-                {
-                    ++currentMin[1];
-                }
-                stack.Push(operand);
-            }
-            else if (operation.StartsWith(POP))
-            {
-                if (stack.Pop() == currentMin[0] && --currentMin[1] == 0)
-                {
-                    minStack.Pop();
-                    currentMin = minStack.Peek();
-                }
-            }
-            else if (operation.StartsWith(TOP))
-            {
-                result.Add(stack.Peek());
-            }
-            else if (operation.StartsWith(GET_MIN))
-            {
-                result.Add(currentMin[0]);
-            }
-        }
-        return result;
+        this.data = nodeData;
+        this.next = null;
+    }
+}
+
+class SinglyLinkedList
+{
+    public SinglyLinkedListNode head;
+    public SinglyLinkedListNode tail;
+
+    public SinglyLinkedList()
+    {
+        this.head = null;
+        this.tail = null;
     }
 
+    public void InsertNode(int nodeData)
+    {
+        SinglyLinkedListNode node = new SinglyLinkedListNode(nodeData);
+
+        if (this.head == null)
+        {
+            this.head = node;
+        }
+        else
+        {
+            this.tail.next = node;
+        }
+
+        this.tail = node;
+    }
+}
+
+class SinglyLinkedListPrintHelepr
+{
+    public static void PrintList(SinglyLinkedListNode node, string sep)
+    {
+        while (node != null)
+        {
+            Console.Write(node.data);
+
+            node = node.next;
+
+            if (node != null)
+            {
+                Console.Write(sep);
+            }
+        }
+    }
+}
+
+class Result
+{
+
+    /*
+     * Complete the 'removeKthNodeFromEnd' function below.
+     *
+     * The function is expected to return an INTEGER_SINGLY_LINKED_LIST.
+     * The function accepts following parameters:
+     *  1. INTEGER_SINGLY_LINKED_LIST head
+     *  2. INTEGER k
+     */
+
+    /*
+     * For your reference:
+     *
+     * SinglyLinkedListNode
+     * {
+     *     int data;
+     *     SinglyLinkedListNode next;
+     * }
+     *
+     */
+
+    public static SinglyLinkedListNode removeKthNodeFromEnd(SinglyLinkedListNode head, int k)
+    {
+        var list = new List<SinglyLinkedListNode>();
+        SinglyLinkedListNode node = head;
+        while (node != null)
+        {
+            list.Add(node);
+            node = node.next;
+        }
+        var index = list.Count - k - 1;
+        if (index < 0)
+        {
+            return head;
+        }
+        if (index == 0)
+        {
+            return list.Count > 1 ? list[1] : null;
+        }
+        if (index == list.Count - 1)
+        {
+            list[^2].next = null;
+            return head;
+        }
+        list[index - 1].next = list[index + 1];
+        return head;
+    }
 }
 
 class Solution
 {
     public static void Main(string[] args)
     {
-        int operationsCount = Convert.ToInt32(Console.ReadLine().Trim());
+        SinglyLinkedList head = new SinglyLinkedList();
 
-        List<string> operations = new List<string>();
+        int headCount = Convert.ToInt32(Console.ReadLine().Trim());
 
-        for (int i = 0; i < operationsCount; i++)
+        for (int i = 0; i < headCount; i++)
         {
-            string operationsItem = Console.ReadLine();
-            operations.Add(operationsItem);
+            int headItem = Convert.ToInt32(Console.ReadLine().Trim());
+            head.InsertNode(headItem);
         }
 
-        List<int> result = Result.processCouponStackOperations(operations);
+        int k = Convert.ToInt32(Console.ReadLine().Trim());
 
-        Console.WriteLine(String.Join("\n", result));
+        SinglyLinkedListNode result = Result.removeKthNodeFromEnd(head.head, k);
+
+        SinglyLinkedListPrintHelepr.PrintList(result, "\n");
+        Console.WriteLine();
     }
 }
+
