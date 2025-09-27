@@ -51,6 +51,7 @@ Console app for coderbyte technical assessment or similar.
   - [Validate Properly Nested Brackets](#validate-properly-nested-brackets)
   - [Min-Tracking Stack Implementation](#min-tracking-stack-implementation)
   - [One-Pass Removal of k-th Node from End](#one-pass-removal-of-k-th-node-from-end)
+  - [Count Number Pairs](#count-number-pairs)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -330,3 +331,8 @@ https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/min-tr
 https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/one-pass-removal-kth-from-end/problem?isFullScreen=true
 
 `git checkout ec47fd1565eabac9bc728605b4697732230af450`
+
+### Count Number Pairs
+https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/count-number-pairs/problem?isFullScreen=true
+
+`git checkout fd07ac8da5860ddd04081adfbf90183bfc5611a1`
