@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/generate-valid-angle-bracket-sequences/problem?isFullScreen=true
+﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/remove-elements-within-k-distance/problem?isFullScreen=true
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -15,49 +15,63 @@ using System;
 
 class Result
 {
-    static readonly char OPEN = '<';
-    static readonly char CLOSE = '>';
 
     /*
-     * Complete the 'generateAngleBracketSequences' function below.
+     * Complete the 'debounceTimestamps' function below.
      *
-     * The function is expected to return a STRING_ARRAY.
-     * The function accepts INTEGER n as parameter.
+     * The function is expected to return an INTEGER.
+     * The function accepts following parameters:
+     *  1. INTEGER_ARRAY timestamps
+     *  2. INTEGER K
      */
 
-    public static List<string> generateAngleBracketSequences(int n)
+    public static int debounceTimestamps(List<int> timestamps, int K)
     {
-        var list = new List<string>();
-        addBracket(list, n, n, string.Empty);
-        return list;
+        if (timestamps.Count <= 0)
+        {
+            return 0;
+        }
+        int keptIndex = 0;
+        int traversingIndex = 1;
+        int eliminatedCount = 0;
+        while (traversingIndex < timestamps.Count)
+        {
+            for (traversingIndex = keptIndex + 1; traversingIndex < timestamps.Count; ++traversingIndex)
+            {
+                if (timestamps[traversingIndex] - timestamps[keptIndex] < K)
+                {
+                    ++eliminatedCount;
+                }
+                else
+                {
+                    keptIndex = traversingIndex;
+                    break;
+                }
+            }
+        }
+        return timestamps.Count - eliminatedCount;
     }
 
-    private static void addBracket(List<string> list, int availableOpen, int availableClose, string brackets)
-    {
-        if (availableOpen <= 0 && availableClose <= 0)
-        {
-            list.Add(brackets);
-            return;
-        }
-        if (availableOpen > 0)
-        {
-            addBracket(list, availableOpen - 1, availableClose, brackets + OPEN);
-        }
-        if (availableClose > availableOpen)
-        {
-            addBracket(list, availableOpen, --availableClose, brackets + CLOSE);
-        }
-    }
 }
 
 class Solution
 {
     public static void Main(string[] args)
     {
-        int n = Convert.ToInt32(Console.ReadLine().Trim());
+        int timestampsCount = Convert.ToInt32(Console.ReadLine().Trim());
 
-        List<string> result = Result.generateAngleBracketSequences(n);
+        List<int> timestamps = new List<int>();
 
-        Console.WriteLine(String.Join("\n", result));
+        for (int i = 0; i < timestampsCount; i++)
+        {
+            int timestampsItem = Convert.ToInt32(Console.ReadLine().Trim());
+            timestamps.Add(timestampsItem);
+        }
+
+        int K = Convert.ToInt32(Console.ReadLine().Trim());
+
+        int result = Result.debounceTimestamps(timestamps, K);
+
+        Console.WriteLine(result);
     }
 }
