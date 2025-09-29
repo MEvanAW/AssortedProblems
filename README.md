@@ -53,6 +53,7 @@ Console app for coderbyte technical assessment or similar.
   - [One-Pass Removal of k-th Node from End](#one-pass-removal-of-k-th-node-from-end)
   - [Count Number Pairs](#count-number-pairs)
   - [Remove Consecutive Duplicates from Sorted Linked List](#remove-consecutive-duplicates-from-sorted-linked-list)
+  - [Generate Valid Angle Bracket Sequences](#generate-valid-angle-bracket-sequences)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -342,3 +343,8 @@ https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/count-
 https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/remove-consecutive-duplicates-sorted-list/problem?isFullScreen=true
 
 `git checkout f22c04788a63066b4ee633034b5228a0923eb5a0`
+
+### Generate Valid Angle Bracket Sequences
+https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/generate-valid-angle-bracket-sequences/problem?isFullScreen=true
+
+`git checkout b42187fb4430c3ee7bf31f5f3ac16e6ef750b37c `
