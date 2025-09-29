@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/count-number-pairs/problem?isFullScreen=true
+﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/remove-consecutive-duplicates-sorted-list/problem?isFullScreen=true
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -13,58 +13,103 @@ using System.Text.RegularExpressions;
 using System.Text;
 using System;
 
+class SinglyLinkedListNode
+{
+    public int data;
+    public SinglyLinkedListNode next;
+
+    public SinglyLinkedListNode(int nodeData)
+    {
+        this.data = nodeData;
+        this.next = null;
+    }
+}
+
+class SinglyLinkedList
+{
+    public SinglyLinkedListNode head;
+    public SinglyLinkedListNode tail;
+
+    public SinglyLinkedList()
+    {
+        this.head = null;
+        this.tail = null;
+    }
+
+    public void InsertNode(int nodeData)
+    {
+        SinglyLinkedListNode node = new SinglyLinkedListNode(nodeData);
+
+        if (this.head == null)
+        {
+            this.head = node;
+        }
+        else
+        {
+            this.tail.next = node;
+        }
+
+        this.tail = node;
+    }
+}
+
+class SinglyLinkedListPrintHelepr
+{
+    public static void PrintList(SinglyLinkedListNode node, string sep)
+    {
+        while (node != null)
+        {
+            Console.Write(node.data);
+
+            node = node.next;
+
+            if (node != null)
+            {
+                Console.Write(sep);
+            }
+        }
+    }
+}
+
 class Result
 {
 
     /*
-     * Complete the 'countAffordablePairs' function below.
+     * Complete the 'deleteDuplicates' function below.
      *
-     * The function is expected to return an INTEGER.
-     * The function accepts following parameters:
-     *  1. INTEGER_ARRAY prices
-     *  2. INTEGER budget
+     * The function is expected to return an INTEGER_SINGLY_LINKED_LIST.
+     * The function accepts INTEGER_SINGLY_LINKED_LIST head as parameter.
      */
-
-    public static int countAffordablePairs(List<int> prices, int budget)
+    public static SinglyLinkedListNode deleteDuplicates(SinglyLinkedListNode head)
     {
-        if (prices.Count < 2)
+        if (head is null)
         {
-            return 0;
+            return head;
         }
-        int count = 0;
-        int halfBudgetCount = 0;
-        for (int i = 0; i < prices.Count; ++i)
+        var movingNode = head;
+        SinglyLinkedListNode? rememberedNode = null;
+        while (movingNode.next is not null)
         {
-            if (prices[i] + prices[i] > budget)
+            if (rememberedNode is not null)
             {
-                break;
-            }
-            ++halfBudgetCount;
-        }
-        if (halfBudgetCount > 1)
-        {
-            count = halfBudgetCount * (halfBudgetCount - 1) / 2;
-        }
-        for (int i = 0; i < prices.Count; ++i)
-        {
-            int limit = budget - prices[i];
-            if (limit < prices[i])
-            {
-                break;
-            }
-            for (int j = Math.Max(halfBudgetCount, i + 1);  j < prices.Count; ++j)
-            {
-                if (prices[j] <= limit)
+                if (movingNode.data != movingNode.next.data)
                 {
-                    ++count;
-                }
-                else
-                {
-                    break;
+                    rememberedNode.next = movingNode.next;
+                    rememberedNode = null;
                 }
             }
+            else if (movingNode.data == movingNode.next.data)
+            {
+                rememberedNode = movingNode;
+            }
+
+            movingNode = movingNode.next;
         }
-        return count;
+        if (rememberedNode is not null)
+        {
+            rememberedNode.next = null;
+        }
+        return head;
     }
 }
 
@@ -72,20 +117,19 @@ class Solution
 {
     public static void Main(string[] args)
     {
-        int pricesCount = Convert.ToInt32(Console.ReadLine().Trim());
+        SinglyLinkedList head = new SinglyLinkedList();
 
-        List<int> prices = new List<int>();
+        int headCount = Convert.ToInt32(Console.ReadLine().Trim());
 
-        for (int i = 0; i < pricesCount; i++)
+        for (int i = 0; i < headCount; i++)
         {
-            int pricesItem = Convert.ToInt32(Console.ReadLine().Trim());
-            prices.Add(pricesItem);
+            int headItem = Convert.ToInt32(Console.ReadLine().Trim());
+            head.InsertNode(headItem);
         }
 
-        int budget = Convert.ToInt32(Console.ReadLine().Trim());
+        SinglyLinkedListNode result = Result.deleteDuplicates(head.head);
 
-        int result = Result.countAffordablePairs(prices, budget);
-
-        Console.WriteLine(result);
+        SinglyLinkedListPrintHelepr.PrintList(result, "\n");
+        Console.WriteLine();
     }
 }
