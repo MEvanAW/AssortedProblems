@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/remove-elements-within-k-distance/problem?isFullScreen=true
+﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/time-slot-task-pairing/problem?isFullScreen=true
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -17,61 +17,51 @@ class Result
 {
 
     /*
-     * Complete the 'debounceTimestamps' function below.
+     * Complete the 'findTaskPairForSlot' function below.
      *
-     * The function is expected to return an INTEGER.
+     * The function is expected to return an INTEGER_ARRAY.
      * The function accepts following parameters:
-     *  1. INTEGER_ARRAY timestamps
-     *  2. INTEGER K
+     *  1. INTEGER_ARRAY taskDurations
+     *  2. INTEGER slotLength
      */
 
-    public static int debounceTimestamps(List<int> timestamps, int K)
+    public static List<int> findTaskPairForSlot(List<int> taskDurations, int slotLength)
     {
-        if (timestamps.Count <= 0)
+        var elementToIndexDict = new Dictionary<int, int>();
+        for (int i = 0; i < taskDurations.Count; ++i)
         {
-            return 0;
-        }
-        int keptIndex = 0;
-        int traversingIndex = 1;
-        int eliminatedCount = 0;
-        while (traversingIndex < timestamps.Count)
-        {
-            for (traversingIndex = keptIndex + 1; traversingIndex < timestamps.Count; ++traversingIndex)
+            if (taskDurations[i] >= slotLength) // No possible match
             {
-                if (timestamps[traversingIndex] - timestamps[keptIndex] < K)
-                {
-                    ++eliminatedCount;
-                }
-                else
-                {
-                    keptIndex = traversingIndex;
-                    break;
-                }
+                continue;
+            }
+            int desiredElement = slotLength - taskDurations[i];
+            if (elementToIndexDict.ContainsKey(desiredElement))
+            {
+                return new List<int> { elementToIndexDict[desiredElement], i };
             }
         }
-        return timestamps.Count - eliminatedCount;
+        return new List<int> { -1, -1 };
     }
-
 }
 
 class Solution
 {
     public static void Main(string[] args)
     {
-        int timestampsCount = Convert.ToInt32(Console.ReadLine().Trim());
+        int taskDurationsCount = Convert.ToInt32(Console.ReadLine().Trim());
 
-        List<int> timestamps = new List<int>();
+        List<int> taskDurations = new List<int>();
 
-        for (int i = 0; i < timestampsCount; i++)
+        for (int i = 0; i < taskDurationsCount; i++)
         {
-            int timestampsItem = Convert.ToInt32(Console.ReadLine().Trim());
-            timestamps.Add(timestampsItem);
+            int taskDurationsItem = Convert.ToInt32(Console.ReadLine().Trim());
+            taskDurations.Add(taskDurationsItem);
         }
 
-        int K = Convert.ToInt32(Console.ReadLine().Trim());
+        int slotLength = Convert.ToInt32(Console.ReadLine().Trim());
 
-        int result = Result.debounceTimestamps(timestamps, K);
+        List<int> result = Result.findTaskPairForSlot(taskDurations, slotLength);
 
-        Console.WriteLine(result);
+        Console.WriteLine(String.Join("\n", result));
     }
 }
