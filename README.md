@@ -55,6 +55,7 @@ Console app for coderbyte technical assessment or similar.
   - [Remove Consecutive Duplicates from Sorted Linked List](#remove-consecutive-duplicates-from-sorted-linked-list)
   - [Generate Valid Angle Bracket Sequences](#generate-valid-angle-bracket-sequences)
   - [Remove Elements Within K Distance](#remove-elements-within-k-distance)
+  - [Time Slot Task Pairing](#time-slot-task-pairing)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -354,3 +355,8 @@ https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/genera
 https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/remove-elements-within-k-distance/problem?isFullScreen=true
 
 `git checkout 25ac9cf72d379dc71efe95286be962c96f9e396d`
+
+### Time Slot Task Pairing
+https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/time-slot-task-pairing/problem?isFullScreen=true
+
+`git checkout 3aae51af24e1e4bdec1e036b5ffe9c2bfb2c88a3`
