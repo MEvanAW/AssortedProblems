@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/remove-consecutive-duplicates-sorted-list/problem?isFullScreen=true
+﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/generate-valid-angle-bracket-sequences/problem?isFullScreen=true
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -13,103 +13,40 @@ using System.Text.RegularExpressions;
 using System.Text;
 using System;
 
-class SinglyLinkedListNode
-{
-    public int data;
-    public SinglyLinkedListNode next;
-
-    public SinglyLinkedListNode(int nodeData)
-    {
-        this.data = nodeData;
-        this.next = null;
-    }
-}
-
-class SinglyLinkedList
-{
-    public SinglyLinkedListNode head;
-    public SinglyLinkedListNode tail;
-
-    public SinglyLinkedList()
-    {
-        this.head = null;
-        this.tail = null;
-    }
-
-    public void InsertNode(int nodeData)
-    {
-        SinglyLinkedListNode node = new SinglyLinkedListNode(nodeData);
-
-        if (this.head == null)
-        {
-            this.head = node;
-        }
-        else
-        {
-            this.tail.next = node;
-        }
-
-        this.tail = node;
-    }
-}
-
-class SinglyLinkedListPrintHelepr
-{
-    public static void PrintList(SinglyLinkedListNode node, string sep)
-    {
-        while (node != null)
-        {
-            Console.Write(node.data);
-
-            node = node.next;
-
-            if (node != null)
-            {
-                Console.Write(sep);
-            }
-        }
-    }
-}
-
 class Result
 {
+    static readonly char OPEN = '<';
+    static readonly char CLOSE = '>';
 
     /*
-     * Complete the 'deleteDuplicates' function below.
+     * Complete the 'generateAngleBracketSequences' function below.
      *
-     * The function is expected to return an INTEGER_SINGLY_LINKED_LIST.
-     * The function accepts INTEGER_SINGLY_LINKED_LIST head as parameter.
+     * The function is expected to return a STRING_ARRAY.
+     * The function accepts INTEGER n as parameter.
      */
-    public static SinglyLinkedListNode deleteDuplicates(SinglyLinkedListNode head)
-    {
-        if (head is null)
-        {
-            return head;
-        }
-        var movingNode = head;
-        SinglyLinkedListNode? rememberedNode = null;
-        while (movingNode.next is not null)
-        {
-            if (rememberedNode is not null)
-            {
-                if (movingNode.data != movingNode.next.data)
-                {
-                    rememberedNode.next = movingNode.next;
-                    rememberedNode = null;
-                }
-            }
-            else if (movingNode.data == movingNode.next.data)
-            {
-                rememberedNode = movingNode;
-            }
 
-            movingNode = movingNode.next;
-        }
-        if (rememberedNode is not null)
+    public static List<string> generateAngleBracketSequences(int n)
+    {
+        var list = new List<string>();
+        addBracket(list, n, n, string.Empty);
+        return list;
+    }
+
+    private static void addBracket(List<string> list, int availableOpen, int availableClose, string brackets)
+    {
+        if (availableOpen <= 0 && availableClose <= 0)
         {
-            rememberedNode.next = null;
+            list.Add(brackets);
+            return;
         }
-        return head;
+        if (availableOpen > 0)
+        {
+            addBracket(list, availableOpen - 1, availableClose, brackets + OPEN);
+        }
+        if (availableClose > availableOpen)
+        {
+            addBracket(list, availableOpen, --availableClose, brackets + CLOSE);
+        }
     }
 }
 
@@ -117,19 +54,10 @@ class Solution
 {
     public static void Main(string[] args)
     {
-        SinglyLinkedList head = new SinglyLinkedList();
+        int n = Convert.ToInt32(Console.ReadLine().Trim());
 
-        int headCount = Convert.ToInt32(Console.ReadLine().Trim());
+        List<string> result = Result.generateAngleBracketSequences(n);
 
-        for (int i = 0; i < headCount; i++)
-        {
-            int headItem = Convert.ToInt32(Console.ReadLine().Trim());
-            head.InsertNode(headItem);
-        }
-
-        SinglyLinkedListNode result = Result.deleteDuplicates(head.head);
-
-        SinglyLinkedListPrintHelepr.PrintList(result, "\n");
-        Console.WriteLine();
+        Console.WriteLine(String.Join("\n", result));
     }
 }
