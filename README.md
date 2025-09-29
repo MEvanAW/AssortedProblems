@@ -52,6 +52,7 @@ Console app for coderbyte technical assessment or similar.
   - [Min-Tracking Stack Implementation](#min-tracking-stack-implementation)
   - [One-Pass Removal of k-th Node from End](#one-pass-removal-of-k-th-node-from-end)
   - [Count Number Pairs](#count-number-pairs)
+  - [Remove Consecutive Duplicates from Sorted Linked List](#remove-consecutive-duplicates-from-sorted-linked-list)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -336,3 +337,8 @@ https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/one-pa
 https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/count-number-pairs/problem?isFullScreen=true
 
 `git checkout fd07ac8da5860ddd04081adfbf90183bfc5611a1`
+
+### Remove Consecutive Duplicates from Sorted Linked List
+https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/remove-consecutive-duplicates-sorted-list/problem?isFullScreen=true
+
+`git checkout f22c04788a63066b4ee633034b5228a0923eb5a0`
