@@ -58,6 +58,7 @@ Console app for coderbyte technical assessment or similar.
   - [Time Slot Task Pairing](#time-slot-task-pairing)
   - [Check Valid Anagram](#check-valid-anagram)
   - [Lexicographical Letter Combinations of Phone Digits](#lexicographical-letter-combinations-of-phone-digits)
+  - [Place N Cameras Without Conflict on Blocked Grid](#place-n-cameras-without-conflict-on-blocked-grid)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -372,3 +373,8 @@ https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/check-
 https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/lexicographical-letter-combinations-phone-digits/problem?isFullScreen=true
 
 `git checkout 2b306f6db74d2b3cd8843b8cc60a172b2664dab5`
+
+### Place N Cameras Without Conflict on Blocked Grid
+https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/place-n-cameras-no-conflict-blocked-grid/problem?isFullScreen=true
+
+`git checkout aeb6f03b5d97647fa414c242b4f6c284ac1d485b`
