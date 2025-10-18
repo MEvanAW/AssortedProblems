@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/check-valid-anagram/problem?isFullScreen=true
+﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/lexicographical-letter-combinations-phone-digits/problem?isFullScreen=true
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -15,49 +15,45 @@ using System;
 
 class Result
 {
+    private static readonly Dictionary<char, char[]> _mapping = new()
+    {
+        { '0' , new char[] { '0' } },
+        { '1' , new char[] { '1' } },
+        { '2' , new char[] { 'a', 'b', 'c' } },
+        { '3' , new char[] { 'd', 'e', 'f' } },
+        { '4' , new char[] { 'g', 'h', 'i' } },
+        { '5' , new char[] { 'j', 'k', 'l' } },
+        { '6' , new char[] { 'm', 'n', 'o' } },
+        { '7' , new char[] { 'p', 'q', 'r', 's' } },
+        { '8' , new char[] { 't', 'u', 'v' } },
+        { '9' , new char[] { 'w', 'x', 'y', 'z' } }
+    };
 
     /*
-     * Complete the 'isAnagram' function below.
+     * Complete the 'minTasksToCancelForNoConflict' function below.
      *
-     * The function is expected to return an INTEGER.
-     * The function accepts following parameters:
-     *  1. STRING s
-     *  2. STRING t
+     * The function is expected to return a STRING_ARRAY.
+     * The function accepts STRING digits as parameter.
      */
 
-    public static int isAnagram(string s, string t)
+    public static List<string> minTasksToCancelForNoConflict(string digits)
     {
-        var charDictionary = new Dictionary<char, int>();
-        foreach (var c in s)
+        var list = new List<string>();
+        map(digits, list, 0, string.Empty);
+        return list;
+    }
+
+    private static void map(string digits, List<string> list, int index, string combination)
+    {
+        if (index >= digits.Length)
         {
-            if (charDictionary.ContainsKey(c))
-            {
-                ++charDictionary[c];
-            }
-            else
-            {
-                charDictionary[c] = 1;
-            }
+            list.Add(combination);
+            return;
         }
-        foreach (var c in t)
+        foreach (var c in _mapping[digits[index]])
         {
-            if (charDictionary.ContainsKey(c))
-            {
-                --charDictionary[c];
-            }
-            else
-            {
-                return 0;
-            }
+            map(digits, list, index + 1, combination + c);
         }
-        foreach (var kvp in charDictionary)
-        {
-            if (kvp.Value != 0)
-            {
-                return 0;
-            }
-        }
-        return 1;
     }
 
 }
@@ -66,12 +62,10 @@ class Solution
 {
     public static void Main(string[] args)
     {
-        string s = Console.ReadLine();
+        string digits = Console.ReadLine();
 
-        string t = Console.ReadLine();
+        List<string> result = Result.minTasksToCancelForNoConflict(digits);
 
-        int result = Result.isAnagram(s, t);
-
-        Console.WriteLine(result);
+        Console.WriteLine(String.Join("\n", result));
     }
 }
