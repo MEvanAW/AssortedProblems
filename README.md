@@ -57,6 +57,7 @@ Console app for coderbyte technical assessment or similar.
   - [Remove Elements Within K Distance](#remove-elements-within-k-distance)
   - [Time Slot Task Pairing](#time-slot-task-pairing)
   - [Check Valid Anagram](#check-valid-anagram)
+  - [Lexicographical Letter Combinations of Phone Digits](#lexicographical-letter-combinations-of-phone-digits)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -366,3 +367,8 @@ https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/time-s
 https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/check-valid-anagram/problem?isFullScreen=true
 
 `git checkout 162fccf3b7959ba061e13f4230e546786a001733`
+
+### Lexicographical Letter Combinations of Phone Digits
+https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/lexicographical-letter-combinations-phone-digits/problem?isFullScreen=true
+
+`git checkout 2b306f6db74d2b3cd8843b8cc60a172b2664dab5`
