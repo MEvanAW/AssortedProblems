@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/time-slot-task-pairing/problem?isFullScreen=true
+﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/check-valid-anagram/problem?isFullScreen=true
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -17,51 +17,61 @@ class Result
 {
 
     /*
-     * Complete the 'findTaskPairForSlot' function below.
+     * Complete the 'isAnagram' function below.
      *
-     * The function is expected to return an INTEGER_ARRAY.
+     * The function is expected to return an INTEGER.
      * The function accepts following parameters:
-     *  1. INTEGER_ARRAY taskDurations
-     *  2. INTEGER slotLength
+     *  1. STRING s
+     *  2. STRING t
      */
 
-    public static List<int> findTaskPairForSlot(List<int> taskDurations, int slotLength)
+    public static int isAnagram(string s, string t)
     {
-        var elementToIndexDict = new Dictionary<int, int>();
-        for (int i = 0; i < taskDurations.Count; ++i)
+        var charDictionary = new Dictionary<char, int>();
+        foreach (var c in s)
         {
-            if (taskDurations[i] >= slotLength) // No possible match
+            if (charDictionary.ContainsKey(c))
             {
-                continue;
+                ++charDictionary[c];
             }
-            int desiredElement = slotLength - taskDurations[i];
-            if (elementToIndexDict.ContainsKey(desiredElement))
+            else
             {
-                return new List<int> { elementToIndexDict[desiredElement], i };
+                charDictionary[c] = 1;
             }
         }
-        return new List<int> { -1, -1 };
+        foreach (var c in t)
+        {
+            if (charDictionary.ContainsKey(c))
+            {
+                --charDictionary[c];
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        foreach (var kvp in charDictionary)
+        {
+            if (kvp.Value != 0)
+            {
+                return 0;
+            }
+        }
+        return 1;
     }
+
 }
 
 class Solution
 {
     public static void Main(string[] args)
     {
-        int taskDurationsCount = Convert.ToInt32(Console.ReadLine().Trim());
+        string s = Console.ReadLine();
 
-        List<int> taskDurations = new List<int>();
+        string t = Console.ReadLine();
 
-        for (int i = 0; i < taskDurationsCount; i++)
-        {
-            int taskDurationsItem = Convert.ToInt32(Console.ReadLine().Trim());
-            taskDurations.Add(taskDurationsItem);
-        }
+        int result = Result.isAnagram(s, t);
 
-        int slotLength = Convert.ToInt32(Console.ReadLine().Trim());
-
-        List<int> result = Result.findTaskPairForSlot(taskDurations, slotLength);
-
-        Console.WriteLine(String.Join("\n", result));
+        Console.WriteLine(result);
     }
 }
