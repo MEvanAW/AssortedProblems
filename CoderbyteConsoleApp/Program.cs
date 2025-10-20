@@ -1,4 +1,4 @@
-﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/place-n-cameras-no-conflict-blocked-grid/problem?isFullScreen=true
+﻿// https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/custom-fibonacci-sequence/problem?isFullScreen=true
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -15,49 +15,30 @@ using System;
 
 class Result
 {
+    private static readonly long[] _fibonacci = new long[] { 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144 };
 
     /*
-     * Complete the 'canPlaceSecurityCameras' function below.
+     * Complete the 'getAutoSaveInterval' function below.
      *
-     * The function is expected to return a BOOLEAN.
-     * The function accepts following parameters:
-     *  1. INTEGER N
-     *  2. 2D_INTEGER_ARRAY grid
+     * The function is expected to return a LONG_INTEGER.
+     * The function accepts INTEGER n as parameter.
      */
 
-    public static bool canPlaceSecurityCameras(int N, List<List<int>> grid)
+    public static long getAutoSaveInterval(int n)
     {
-        var usedColumns = new HashSet<int>();
-        var usedDiagonals = new HashSet<int>();
-        var usedAntiDiagonals = new HashSet<int>();
-
-        return recursivePlaceCameras(grid, usedColumns, usedDiagonals, usedAntiDiagonals, 0);
-    }
-
-    private static bool recursivePlaceCameras(List<List<int>> grid, HashSet<int> usedColumns, HashSet<int> usedDiagonals, HashSet<int> usedAntiDiagonals, int row)
-    {
-        if (row == grid.Count)
+        if (n < _fibonacci.Length)
         {
-            return true;
+            return _fibonacci[n];
         }
-        for (int col = 0; col < grid.Count; ++col)
+        long operand = _fibonacci[_fibonacci.Length - 2];
+        long sum = _fibonacci[_fibonacci.Length - 1];
+        for (int i = _fibonacci.Length; i <= n; ++i)
         {
-            if (grid[row][col] == 1 || usedColumns.Contains(col) || usedDiagonals.Contains(row + col) || usedAntiDiagonals.Contains(row - col))
-            {
-                continue;
-            }
-            usedColumns.Add(col);
-            usedDiagonals.Add(row + col);
-            usedAntiDiagonals.Add(row - col);
-            if (recursivePlaceCameras(grid, usedColumns, usedDiagonals, usedAntiDiagonals, row + 1))
-            {
-                return true;
-            }
-            usedColumns.Remove(col);
-            usedDiagonals.Remove(row + col);
-            usedAntiDiagonals.Remove(row - col);
+            long temp = sum;
+            sum += operand;
+            operand = temp;
         }
-        return false;
+        return sum;
     }
 }
 
@@ -65,20 +46,10 @@ class Solution
 {
     public static void Main(string[] args)
     {
-        int N = Convert.ToInt32(Console.ReadLine().Trim());
+        int n = Convert.ToInt32(Console.ReadLine().Trim());
 
-        int gridRows = Convert.ToInt32(Console.ReadLine().Trim());
-        int gridColumns = Convert.ToInt32(Console.ReadLine().Trim());
+        long result = Result.getAutoSaveInterval(n);
 
-        List<List<int>> grid = new List<List<int>>();
-
-        for (int i = 0; i < gridRows; i++)
-        {
-            grid.Add(Console.ReadLine().TrimEnd().Split(' ').ToList().Select(gridTemp => Convert.ToInt32(gridTemp)).ToList());
-        }
-
-        bool result = Result.canPlaceSecurityCameras(N, grid);
-
-        Console.WriteLine((result ? 1 : 0));
+        Console.WriteLine(result);
     }
 }
