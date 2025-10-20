@@ -59,6 +59,7 @@ Console app for coderbyte technical assessment or similar.
   - [Check Valid Anagram](#check-valid-anagram)
   - [Lexicographical Letter Combinations of Phone Digits](#lexicographical-letter-combinations-of-phone-digits)
   - [Place N Cameras Without Conflict on Blocked Grid](#place-n-cameras-without-conflict-on-blocked-grid)
+  - [Custom Fibonacci Sequence](#custom-fibonacci-sequence)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -378,3 +379,8 @@ https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/lexico
 https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/place-n-cameras-no-conflict-blocked-grid/problem?isFullScreen=true
 
 `git checkout aeb6f03b5d97647fa414c242b4f6c284ac1d485b`
+
+### Custom Fibonacci Sequence
+https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/custom-fibonacci-sequence/problem?isFullScreen=true
+
+`git checkout 31cc843734c31695d9d5d28b64f75bcf98b547b0`
