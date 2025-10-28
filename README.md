@@ -61,6 +61,7 @@ Console app for coderbyte technical assessment or similar.
   - [Place N Cameras Without Conflict on Blocked Grid](#place-n-cameras-without-conflict-on-blocked-grid)
   - [Custom Fibonacci Sequence](#custom-fibonacci-sequence)
   - [Ways to Fill Slots with Single or Double Coverage](#ways-to-fill-slots-with-single-or-double-coverage)
+  - [Count Connected Components in Network](#count-connected-components-in-network)
 ## FizzBuzz
 ### Problem
 https://www.hackerrank.com/challenges/fizzbuzz/problem</br>
@@ -390,3 +391,8 @@ https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/custom
 https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/ways-to-fill-slots-single-double-coverage/problem?isFullScreen=true
 
 `git checkout 0c27de20b42708ec8a10bb3c7756af47ee0ce0e9`
+
+### Count Connected Components in Network
+https://www.hackerrank.com/contests/software-engineer-prep-kit/challenges/count-connected-components-in-network/problem?isFullScreen=true
+
+`git checkout a3fdf85c8b822b4b20b74c214d6ce3d4dea1d79c`
